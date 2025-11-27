@@ -40,3 +40,14 @@ body {
 .characters1:hover {
     color: rgb(157, 210, 214);
 }
+
+.search {
+    height: 34px;
+    line-height: 34px;
+    border-top: solid 1px #dcdcdc;
+    border-left: solid 1px #dcdcdc;
+    border-bottom: solid 1px #dcdcdc;
+    border-right: solid 1px #ffffff;
+    width: 260px;
+    text-indent: 10px;
+}
