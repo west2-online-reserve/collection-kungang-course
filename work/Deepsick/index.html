@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福州大学云校史馆 | 红色传承 薪火相传</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fzuRed: '#9e0b0f', 
+                        fzuGold: '#d4af37',
+                        offWhite: '#f9f9f9'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans selection:bg-fzuRed selection:text-white">
+
+    <nav class="bg-white shadow-lg sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center cursor-pointer" onclick="switchTab('home')">
+                    <i class="fas fa-university text-fzuRed text-2xl mr-2"></i>
+                    <span class="font-bold text-xl tracking-wider text-fzuRed">福州大学<span class="text-gray-600 text-sm ml-2 font-normal hidden sm:inline">云校史馆</span></span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="switchTab('home')" class="nav-btn text-gray-700 hover:text-fzuRed font-medium transition duration-300 border-b-2 border-transparent hover:border-fzuRed">首页</button>
+                    <button onclick="switchTab('history')" class="nav-btn text-gray-700 hover:text-fzuRed font-medium transition duration-300 border-b-2 border-transparent hover:border-fzuRed">校史脉络</button>
+                    <button onclick="switchTab('red-culture')" class="nav-btn text-gray-700 hover:text-fzuRed font-medium transition duration-300 border-b-2 border-transparent hover:border-fzuRed">红色基因</button>
+                    <button onclick="switchTab('scenery')" class="nav-btn text-gray-700 hover:text-fzuRed font-medium transition duration-300 border-b-2 border-transparent hover:border-fzuRed">大美福大</button>
+                    <button onclick="switchTab('quiz')" class="nav-btn text-gray-700 hover:text-fzuRed font-medium transition duration-300 border-b-2 border-transparent hover:border-fzuRed">校史问答</button>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-fzuRed focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <button onclick="switchTab('home')" class="block w-full text-left py-2 px-4 text-gray-700 hover:bg-gray-100">首页</button>
+            <button onclick="switchTab('history')" class="block w-full text-left py-2 px-4 text-gray-700 hover:bg-gray-100">校史脉络</button>
+            <button onclick="switchTab('red-culture')" class="block w-full text-left py-2 px-4 text-gray-700 hover:bg-gray-100">红色基因</button>
+            <button onclick="switchTab('scenery')" class="block w-full text-left py-2 px-4 text-gray-700 hover:bg-gray-100">大美福大</button>
+            <button onclick="switchTab('quiz')" class="block w-full text-left py-2 px-4 text-gray-700 hover:bg-gray-100">校史问答</button>
+        </div>
+    </nav>
+
+    <main class="min-h-screen">
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <p class="font-bold text-lg">福州大学 Fuzhou University</p>
+                <p class="text-gray-400 text-sm">地址：福建省福州市福州大学城乌龙江北大道2号</p>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-weixin text-2xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-weibo text-2xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fas fa-globe text-2xl"></i></a>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-8 border-t border-gray-700 pt-4">
+            &copy; 2025 福州大学校史馆展示项目 | Designed for FZU
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
