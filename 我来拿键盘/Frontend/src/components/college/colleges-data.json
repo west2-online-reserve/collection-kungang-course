@@ -1,0 +1,116 @@
+[
+    {
+        "id": 1,
+        "name": "计算机与大数据学院",
+        "shortName": "计大院",
+        "cover": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800",
+        "description": "培养新时代计算机科学与技术创新人才",
+        "introduction": "计算机与大数据学院成立于1975年，是福州大学历史最悠久的学院之一。学院拥有计算机科学与技术、软件工程、网络空间安全等多个一流本科专业，致力于培养具有创新精神和实践能力的高素质计算机人才。",
+        "teachers": [
+            {
+                "name": "陈教授",
+                "title": "教授、博士生导师",
+                "research": "人工智能、机器学习",
+                "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200",
+                "achievements": "国家杰出青年基金获得者，发表SCI论文100余篇"
+            },
+            {
+                "name": "李教授",
+                "title": "教授、院长",
+                "research": "大数据分析、云计算",
+                "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200",
+                "achievements": "教育部长江学者，主持国家重点研发计划项目"
+            },
+            {
+                "name": "王副教授",
+                "title": "副教授、硕士生导师",
+                "research": "网络安全、区块链",
+                "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200",
+                "achievements": "福建省青年科技奖获得者"
+            }
+        ],
+        "labs": [
+            {
+                "name": "人工智能实验室",
+                "description": "配备高性能GPU服务器集群，用于深度学习、计算机视觉等前沿AI技术研究",
+                "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600",
+                "equipment": "NVIDIA A100 GPU × 8, 高性能计算集群"
+            },
+            {
+                "name": "大数据分析实验室",
+                "description": "拥有完整的大数据处理平台，支持PB级数据分析与处理",
+                "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600",
+                "equipment": "Hadoop集群, Spark集群, 数据可视化平台"
+            },
+            {
+                "name": "网络安全实验室",
+                "description": "配备专业的网络攻防演练平台，培养网络安全人才",
+                "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600",
+                "equipment": "渗透测试工具套件, 防火墙系统, 入侵检测系统"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "电气工程与自动化学院",
+        "shortName": "电气院",
+        "cover": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800",
+        "description": "电气工程领域的领军学院",
+        "introduction": "电气工程与自动化学院是福州大学的传统优势学院，拥有电气工程一级学科博士点。学院注重理论与实践相结合，培养了大批优秀的电气工程师和研究人员。",
+        "teachers": [
+            {
+                "name": "张院士",
+                "title": "中国工程院院士、教授",
+                "research": "电力系统、智能电网",
+                "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200",
+                "achievements": "国家科技进步一等奖获得者"
+            },
+            {
+                "name": "刘教授",
+                "title": "教授、博士生导师",
+                "research": "电机控制、新能源",
+                "photo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200",
+                "achievements": "国家自然科学基金重点项目负责人"
+            }
+        ],
+        "labs": [
+            {
+                "name": "智能电网实验室",
+                "description": "研究智能电网关键技术，推动能源互联网发展",
+                "image": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600",
+                "equipment": "智能电网仿真系统, 配电自动化平台"
+            },
+            {
+                "name": "电力电子实验室",
+                "description": "专注于电力电子与电力传动技术研究",
+                "image": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600",
+                "equipment": "变频器测试平台, 电机控制系统"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "机械工程及自动化学院",
+        "shortName": "机械院",
+        "cover": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800",
+        "description": "培养高素质机械工程人才",
+        "introduction": "机械工程及自动化学院具有悠久的办学历史和深厚的学术底蕴，在机械设计、制造及自动化领域享有盛誉。学院坚持产学研相结合，为国家制造业发展做出重要贡献。",
+        "teachers": [
+            {
+                "name": "赵教授",
+                "title": "教授、博士生导师",
+                "research": "机器人技术、智能制造",
+                "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200",
+                "achievements": "福建省科技进步一等奖获得者"
+            }
+        ],
+        "labs": [
+            {
+                "name": "机器人实验室",
+                "description": "开展工业机器人和服务机器人研发",
+                "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600",
+                "equipment": "工业机器人 × 5, 协作机器人 × 3"
+            }
+        ]
+    }
+]

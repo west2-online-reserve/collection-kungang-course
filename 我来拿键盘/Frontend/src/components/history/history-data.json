@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "year": "1958",
+    "title": "建校伊始",
+    "description": "福州大学创建于1958年，首任校长为著名科学家贾庆国先生。学校初创时期，师生们发扬'艰苦奋斗'的精神，在荒地上建起了第一批校舍。",
+    "image": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    "id": 2,
+    "year": "1960",
+    "title": "首届招生",
+    "description": "1960年，福州大学迎来了第一批本科生。来自五湖四海的学子汇聚一堂，开启了求知若渴的大学生涯。",
+    "image": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    "id": 3,
+    "year": "1978",
+    "title": "改革开放",
+    "description": "随着改革开放的春风吹遍神州大地，福州大学也迎来了新的发展机遇。学校恢复高考招生，教学科研工作全面步入正轨。",
+    "image": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    "id": 4,
+    "year": "1996",
+    "title": "211工程",
+    "description": "1996年，福州大学入选国家'211工程'重点建设高校，标志着学校进入了国家重点大学行列，办学实力显著提升。",
+    "image": "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    "id": 5,
+    "year": "2005",
+    "title": "新校区搬迁",
+    "description": "2005年，福州大学主体搬迁至旗山校区。新校区环境优美，设施先进，为学校的长远发展奠定了坚实基础。",
+    "image": "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    "id": 6,
+    "year": "2017",
+    "title": "双一流建设",
+    "description": "2017年，福州大学入选国家'双一流'建设高校名单，化学学科入选世界一流学科建设名单，开启了建设世界一流大学的新征程。",
+    "image": "https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    "id": 7,
+    "year": "2023",
+    "title": "建校65周年",
+    "description": "2023年，福州大学迎来建校65周年华诞。六十五载风雨兼程，六十五载桃李芬芳，福大人始终秉承'明德至诚，博学远志'的校训，砥砺前行。",
+    "image": "https://images.unsplash.com/photo-1627556704290-2b1f5853ff78?q=80&w=1000&auto=format&fit=crop"
+  }
+]

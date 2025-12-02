@@ -1,0 +1,14 @@
+tunnel: my-computer
+credentials-file: .\my-computer.json   # ← JSON 路径随便放
+protocol: auto
+# 如果你也想指定 cert.pem，可以加：
+origincert: .\cert.pem                  # ← 可选
+
+ingress:
+  - hostname: fzu-hi-museum.zviolin.online
+    service: http://localhost:80
+
+  - hostname: api.fzu-hi-museum.zviolin.online
+    service: http://localhost:8080
+
+  - service: http_status:404

@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "钟楼",
+        "coordinates": [
+            119.1952,
+            26.0614
+        ],
+        "thumbnail": "https://images.unsplash.com/photo-1564981797816-1043664bf78d?q=80&w=1000&auto=format&fit=crop",
+        "description": "福州大学标志性建筑，见证学校发展历程",
+        "images": [
+            "https://images.unsplash.com/photo-1564981797816-1043664bf78d?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1577495508326-19a1b3cf65b7?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=1000&auto=format&fit=crop"
+        ],
+        "detailedDescription": "钟楼是福州大学最具代表性的建筑之一，建于学校创建初期。塔楼高耸入云，古朴典雅的设计融合了中西方建筑风格，成为校园的精神象征。每当整点钟声响起，悦耳的钟声回荡在整个校园，提醒着师生珍惜时光，奋发向上。"
+    },
+    {
+        "id": 2,
+        "name": "图书馆",
+        "coordinates": [
+            119.1965,
+            26.0620
+        ],
+        "thumbnail": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1000&auto=format&fit=crop",
+        "description": "现代化综合图书馆，藏书丰富",
+        "images": [
+            "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1000&auto=format&fit=crop"
+        ],
+        "detailedDescription": "福州大学图书馆总建筑面积达数万平方米，馆藏纸质图书超过300万册，电子资源丰富。馆内设有自习区、研讨室、创客空间等多功能区域，为师生提供了良好的学习和研究环境。建筑采用现代化设计，宽敞明亮，是学生们最喜爱的学习场所之一。"
+    },
+    {
+        "id": 3,
+        "name": "荷花池",
+        "coordinates": [
+            119.1945,
+            26.0608
+        ],
+        "thumbnail": "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1000&auto=format&fit=crop",
+        "description": "校园内的美丽景观，四季风景宜人",
+        "images": [
+            "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1604537529428-15bcbeecfe4d?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1595147389795-37094173bfd8?q=80&w=1000&auto=format&fit=crop"
+        ],
+        "detailedDescription": "荷花池是校园内一处宁静优美的景观区。每到夏季，池中荷花盛开，清香四溢，吸引众多师生前来观赏。池边垂柳依依，小桥流水，是休闲放松的好去处。许多学生在此晨读、散步，感受大自然的美好。"
+    },
+    {
+        "id": 4,
+        "name": "体育馆",
+        "coordinates": [
+            119.1972,
+            26.0602
+        ],
+        "thumbnail": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop",
+        "description": "设施齐全的综合体育场馆",
+        "images": [
+            "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1000&auto=format&fit=crop"
+        ],
+        "detailedDescription": "福州大学体育馆是一座现代化的综合性体育场馆，可容纳数千人。馆内设有篮球场、羽毛球场、乒乓球室、健身房等多种运动设施。这里不仅是学生体育课和运动训练的场所，也是学校举办各类体育赛事和大型活动的重要场地。"
+    },
+    {
+        "id": 5,
+        "name": "教学楼A座",
+        "coordinates": [
+            119.1958,
+            26.0616
+        ],
+        "thumbnail": "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1000&auto=format&fit=crop",
+        "description": "主要教学区域，承载无数求学梦想",
+        "images": [
+            "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1000&auto=format&fit=crop"
+        ],
+        "detailedDescription": "教学楼A座是学校最早建成的教学楼之一，见证了一代又一代学子的成长。楼内教室宽敞明亮，配备现代化多媒体教学设备。走廊墙上挂满了学生作品和优秀师生的照片，营造出浓厚的学习氛围。"
+    }
+]
