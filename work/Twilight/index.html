@@ -73,6 +73,77 @@
 
     <main class="min-h-screen">
 
+        <section id="home" class="page-section active">
+            <div class="hero-bg h-[500px] flex items-center justify-center text-center text-white px-4">
+                <div class="animate-slide-up">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-widest">明德至诚 博学远志</h1>
+                    <p class="text-xl md:text-2xl mb-8 font-light">庆祝福州大学建校 <span id="year-counter" class="font-bold text-fzuGold text-3xl">65</span> 周年</p>
+                    <button onclick="switchTab('history')" class="bg-fzuRed hover:bg-red-800 text-white font-bold py-3 px-8 rounded-full transition transform hover:scale-105 shadow-lg border-2 border-white/20">
+                        开启校史之旅 <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto py-16 px-4">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-fzuRed mb-6 border-l-4 border-fzuRed pl-4">学校概况</h2>
+                        <p class="text-gray-600 leading-relaxed mb-4 text-justify">
+                            福州大学是国家“双一流”建设高校、国家“211工程”重点建设大学、福建省人民政府与国家教育部共建高校。创建于1958年，现已发展成为一所以工为主、理工结合，理、工、经、管、文、法、艺等多学科协调发展的重点大学。
+                        </p>
+                        <p class="text-gray-600 leading-relaxed text-justify">
+                            学校深入开展学习贯彻习近平新时代中国特色社会主义思想主题教育，传承弘扬“三种精神”，汇聚起建设世界一流东南强校的磅礴力量。
+                        </p>
+                        <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+                            <div class="p-4 bg-white shadow rounded-lg">
+                                <i class="fas fa-user-graduate text-fzuRed text-2xl mb-2"></i>
+                                <div class="font-bold">40000+</div>
+                                <div class="text-sm text-gray-500">在校本科生</div>
+                            </div>
+                            <div class="p-4 bg-white shadow rounded-lg">
+                                <i class="fas fa-chalkboard-teacher text-fzuRed text-2xl mb-2"></i>
+                                <div class="font-bold">19000+</div>
+                                <div class="text-sm text-gray-500">各类博、硕士研究生</div>
+                            </div>
+                            <div class="p-4 bg-white shadow rounded-lg">
+                                <i class="fas fa-book text-fzuRed text-2xl mb-2"></i>
+                                <div class="font-bold">3400+</div>
+                                <div class="text-sm text-gray-500">教职工</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <img src="images/campus-intro.jpg" alt="学校大门" class="rounded-lg shadow-2xl transform group-hover:scale-[1.02] transition duration-500 w-full h-80 object-cover">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-4 shadow-xl rounded-lg hidden md:block">
+                            <p class="text-fzuRed font-bold">东南强校</p>
+                            <p class="text-gray-500 text-sm">追求卓越 止于至善</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-100 py-12">
+                <div class="max-w-4xl mx-auto px-4 text-center">
+                    <h2 class="text-2xl font-bold mb-4">校友寄语墙</h2>
+                    <p class="text-gray-600 mb-6">写下您对福大的祝福...</p>
+                    <div class="flex gap-2 justify-center mb-8">
+                        <input type="text" id="guest-name" placeholder="您的名字" class="px-4 py-2 rounded border focus:outline-none focus:border-fzuRed w-1/4">
+                        <input type="text" id="guest-msg" placeholder="输入祝福语..." class="px-4 py-2 rounded border focus:outline-none focus:border-fzuRed w-1/2">
+                        <button onclick="addMessage()" class="bg-fzuRed text-white px-6 py-2 rounded hover:bg-red-800 transition">发送</button>
+                    </div>
+                    <div id="message-board" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+                        <div class="bg-white p-4 rounded shadow border-l-4 border-fzuGold">
+                            <p class="text-gray-800">祝福大越来越好，再创辉煌</p>
+                            <p class="text-right text-sm text-gray-500 mt-2">- ywx</p>
+                        </div>
+                         <div class="bg-white p-4 rounded shadow border-l-4 border-fzuGold">
+                            <p class="text-gray-800">祝福大计算机学院，弦歌不辍，步履不停。</p>
+                            <p class="text-right text-sm text-gray-500 mt-2">- ccq</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
     </main>
