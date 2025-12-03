@@ -35,14 +35,15 @@
 
     <!-- 右侧滚动区域：时间轴列表 -->
     <div class="w-full md:w-1/2 h-1/2 md:h-full overflow-y-auto relative scroll-smooth bg-parchment" ref="scrollContainer">
-      <div class="flex flex-col py-[80%]">
+      <div class="flex flex-col py-[300%]">
         <div class="relative border-l-2 border-amber-800/30 ml-12 md:ml-24 space-y-32 pr-8 md:pr-16 max-w-xl">
           <div
             v-for="(item, index) in historyData"
             :key="item.id"
             :ref="el => setItemRef(el, item.id)"
-            class="relative pl-8 md:pl-12 group transition-all duration-700 ease-out"
+            class="relative pl-8 md:pl-12 group transition-all duration-700 ease-out cursor-pointer"
             :class="currentId === item.id ? 'opacity-100 translate-x-0 scale-100' : 'opacity-40 translate-x-4 scale-95 blur-[1px]'"
+            @click="scrollToItem(item.id)"
           >
             <!-- 时间轴节点 -->
             <div
@@ -99,6 +100,25 @@ const setItemRef = (el: any, id: number) => {
   }
 }
 
+// 滚动到指定项目
+const scrollToItem = (id: number) => {
+  const element = itemRefs.value.get(id)
+  if (element && scrollContainer.value) {
+    // 计算元素相对于容器的位置，使其滚动到容器的上半部分
+    const elementRect = element.getBoundingClientRect()
+    const containerRect = scrollContainer.value.getBoundingClientRect()
+    const offset = elementRect.top - containerRect.top - containerRect.height / 3
+
+    scrollContainer.value.scrollBy({
+      top: offset,
+      behavior: 'smooth'
+    })
+
+    // 直接更新当前ID以提供即时反馈
+    currentId.value = id
+  }
+}
+
 // Intersection Observer 实例
 let observer: IntersectionObserver | null = null
 
@@ -106,8 +126,8 @@ onMounted(() => {
   // 设置 Intersection Observer
   const options = {
     root: scrollContainer.value,
-    rootMargin: '-20% 0px -70% 0px', // 当元素进入视口顶部20%位置时触发
-    threshold: 0
+    rootMargin: '-15% 0px -75% 0px', // 调整触发区域，使其更容易触发
+    threshold: 0.1 // 当元素有10%可见时触发
   }
 
   observer = new IntersectionObserver((entries) => {

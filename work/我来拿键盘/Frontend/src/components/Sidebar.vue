@@ -11,8 +11,6 @@
     <div class="h-full w-full overflow-y-auto overflow-x-hidden py-16 px-0 relative" v-if="ui.navExpanded">
       <!-- 内容容器 -->
       <div class="flex flex-col items-center space-y-0 relative min-h-full">
-
-        <!-- SVG背景层 - 放在底层 -->
         <!-- SVG背景层 - 放在底层 -->
         <div class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
           <svg class="w-full h-full" style="overflow: visible;">

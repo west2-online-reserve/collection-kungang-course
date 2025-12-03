@@ -30,10 +30,19 @@
               class="bg-white/90 backdrop-blur text-[#5d4037] px-4 py-2 rounded-full font-bold shadow-sm border border-amber-200"
             >
               下个水果:
-              <span
-                class="inline-block w-4 h-4 rounded-full align-middle ml-1"
-                :style="{ backgroundColor: nextFruitColor }"
-              ></span>
+              <div class="inline-block align-middle ml-1 w-8 h-8 flex items-center justify-center">
+                <img
+                  v-if="nextFruitImage"
+                  :src="nextFruitImage"
+                  class="w-full h-full rounded-full object-cover border border-amber-200"
+                  alt="next"
+                />
+                <span
+                  v-else
+                  class="inline-block w-4 h-4 rounded-full"
+                  :style="{ backgroundColor: nextFruitColor }"
+                ></span>
+              </div>
             </div>
           </div>
 
@@ -209,7 +218,7 @@ import { useUserStore } from '@/stores/user'
 import { getApiUrl, API_ENDPOINTS } from '@/config/api'
 
 // ===================== 类型定义 =====================
-/** 玩家信息 */
+/** 玩家信息 **/
 interface PlayerInfo {
   id: string
   name: string
@@ -245,7 +254,7 @@ interface SubmitStatus {
  * 4. 如果 img 留空，系统会自动使用 color 字段的颜色绘制圆球
  */
 const FRUITS = [
-  { level: 0, radius: 20, color: '#9e00eb', score: 2, img: '' }, // 葡萄
+  { level: 0, radius: 20, color: '#9e00eb', score: 2, img: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1000&auto=format&fit=crop' }, // 葡萄
   { level: 1, radius: 30, color: '#ff5454', score: 4, img: '' }, // 樱桃
   { level: 2, radius: 42, color: '#ffbd14', score: 6, img: '' }, // 橘子
   { level: 3, radius: 54, color: '#ffec27', score: 8, img: '' }, // 柠檬
@@ -291,6 +300,15 @@ const nextFruitColor = computed(() => {
   const fruitData = FRUITS[nextFruitIndex.value]
   return fruitData ? fruitData.color : '#9e00eb' // 默认颜色作为后备
 })
+
+// 计算属性：预览下一个水果的图片
+const nextFruitImage = computed(() => {
+  const fruitData = FRUITS[nextFruitIndex.value]
+  return fruitData && fruitData.img ? fruitData.img : null
+})
+
+// 预处理后的纹理缓存
+const processedTextures = ref<Record<number, string>>({})
 
 // 本地存储key
 const keyPersonal = computed(() => `watermelon_personal_${player.value.id}`)
@@ -340,6 +358,7 @@ const loadMatterJS = () => {
 const initGame = async () => {
   try {
     await loadMatterJS()
+    await preloadTextures() // 预加载并处理图片
 
     // 重置状态
     currentScore.value = 0
@@ -429,11 +448,21 @@ const initGame = async () => {
 
 // 3. 辅助函数：生成渲染配置（支持图片）
 const getRenderConfig = (fruitData: any) => {
-  if (fruitData.img) {
+  // 优先使用预处理后的圆形纹理
+  if (processedTextures.value[fruitData.level]) {
+    return {
+      sprite: {
+        texture: processedTextures.value[fruitData.level],
+        xScale: (fruitData.radius * 2) / 200, // 假设处理后的图片是 200x200
+        yScale: (fruitData.radius * 2) / 200,
+      },
+    }
+  } else if (fruitData.img) {
+    // 降级处理：直接使用原图（可能不是圆的）
     return {
       sprite: {
         texture: fruitData.img,
-        xScale: (fruitData.radius * 2) / 200,
+        xScale: (fruitData.radius * 2) / 200, // 这里的缩放可能不准确，取决于原图尺寸
         yScale: (fruitData.radius * 2) / 200,
       },
     }
@@ -442,6 +471,61 @@ const getRenderConfig = (fruitData: any) => {
       fillStyle: fruitData.color,
     }
   }
+}
+
+/**
+ * 图片预处理：将图片裁剪为圆形并居中
+ * @param imgUrl 图片地址
+ * @returns Promise<string> 处理后的图片Base64
+ */
+const processImageToCircle = (imgUrl: string): Promise<string> => {
+  return new Promise((resolve) => {
+    const img = new Image()
+    img.crossOrigin = 'Anonymous' // 处理跨域图片
+    img.src = imgUrl
+    img.onload = () => {
+      const size = 200 // 标准化纹理尺寸
+      const canvas = document.createElement('canvas')
+      canvas.width = size
+      canvas.height = size
+      const ctx = canvas.getContext('2d')
+      if (!ctx) {
+        resolve(imgUrl)
+        return
+      }
+
+      // 1. 绘制圆形路径
+      ctx.beginPath()
+      ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2)
+      ctx.closePath()
+      ctx.clip()
+
+      // 2. 计算裁剪区域（居中裁剪）
+      const minDim = Math.min(img.width, img.height)
+      const sx = (img.width - minDim) / 2
+      const sy = (img.height - minDim) / 2
+
+      // 3. 绘制图片
+      ctx.drawImage(img, sx, sy, minDim, minDim, 0, 0, size, size)
+
+      resolve(canvas.toDataURL())
+    }
+    img.onerror = () => {
+      console.warn(`Failed to load image: ${imgUrl}`)
+      resolve(imgUrl) // 加载失败返回原图
+    }
+  })
+}
+
+/** 预加载所有水果图片 */
+const preloadTextures = async () => {
+  const promises = FRUITS.map(async (fruit) => {
+    if (fruit.img && !processedTextures.value[fruit.level]) {
+      const processed = await processImageToCircle(fruit.img)
+      processedTextures.value[fruit.level] = processed
+    }
+  })
+  await Promise.all(promises)
 }
 
 // 4. 创建待下落的水果
