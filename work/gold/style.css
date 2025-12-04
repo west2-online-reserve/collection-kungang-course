@@ -1,0 +1,135 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 头部导航样式 */
+header {
+    background-color: #e03a3e; /* 福大红色 */
+    color: white;
+    padding: 15px 0;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 1rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* 通用section样式 */
+section {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+section h2 {
+    color: #e03a3e;
+    border-bottom: 2px solid #e03a3e;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* 时间轴样式 */
+.timeline {
+    position: relative;
+    padding-left: 40px;
+    border-left: 2px solid #e03a3e;
+}
+
+.timeline-item {
+    margin-bottom: 50px;
+}
+
+.timeline-year {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e03a3e;
+    margin-bottom: 15px;
+}
+
+.timeline-content img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+}
+
+/* 红色文化模块样式 */
+.culture-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+}
+
+.culture-container img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border: 1px solid #eee;
+}
+
+.culture-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* 关于校史馆样式 */
+.about-section p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* 底部样式 */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+/* 响应式适配（手机端） */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        margin: 0 10px;
+    }
+
+    .timeline {
+        padding-left: 20px;
+    }
+}
