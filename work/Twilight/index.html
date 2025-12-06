@@ -352,6 +352,37 @@
             </div>
         </section>
 
+        <section id="quiz" class="page-section py-12">
+            <div class="max-w-2xl mx-auto px-4">
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
+                    <div class="bg-fzuRed p-6 text-white text-center">
+                        <h2 class="text-2xl font-bold"><i class="fas fa-question-circle mr-2"></i>校史知识大挑战</h2>
+                        <p class="text-red-100 mt-2">测试你对福大的了解程度</p>
+                    </div>
+                    
+                    <div class="p-8" id="quiz-container">
+                        <div id="question-area">
+                            <div class="flex justify-between text-sm text-gray-500 mb-4">
+                                <span id="question-number">Question 1/5</span>
+                                <span id="current-score" class="font-bold text-fzuRed">Score: 0</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-6" id="question-text">加载中...</h3>
+                            <div class="space-y-3" id="options-area">
+                                </div>
+                            <button id="next-btn" onclick="nextQuestion()" class="mt-8 w-full bg-gray-800 text-white py-3 rounded-lg hover:bg-black transition hidden">下一题</button>
+                        </div>
+
+                        <div id="result-area" class="hidden text-center py-8">
+                            <i class="fas fa-trophy text-6xl text-fzuGold mb-4"></i>
+                            <h3 class="text-2xl font-bold mb-2">挑战结束!</h3>
+                            <p class="text-gray-600 mb-6">您的最终得分是：<span id="final-score" class="text-3xl font-bold text-fzuRed">0</span> / 100</p>
+                            <p id="result-comment" class="mb-8 font-medium">不错哦，继续加油！</p>
+                            <button onclick="restartQuiz()" class="bg-fzuRed text-white px-8 py-3 rounded-full hover:bg-red-800 transition">重新挑战</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
