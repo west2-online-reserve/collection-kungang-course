@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>福州大学·校园一站式展示</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.font.im/css?family=Noto+Sans+SC:400,700">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="logo"><span>🎓</span> 福州大学</div>
+    <ul>
+      <li class="menu-item active" data-page="section-history">校史馆</li>
+      <li class="menu-item" data-page="section-location">校园打卡点</li>
+      <li class="menu-item" data-page="section-college">学院简介</li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- 校史馆 -->
+    <section id="section-history" class="page-section showing">
+      <div class="hero">
+        <img src="img/schoolgate.jpg" alt="福州大学校门">
+        <div>
+          <h1>福州大学校史馆</h1>
+          <p class="hero-desc">见证红色基因，传承百年校史</p>
+        </div>
+      </div>
+      <div class="timeline-area">
+        <ul class="timeline-list">
+          <li data-evt="1958" class="evt active"><span>1958</span><div>创校</div></li>
+          <li data-evt="1978" class="evt"><span>1978</span><div>新校区</div></li>
+          <li data-evt="2000" class="evt"><span>2000</span><div>211工程</div></li>
+          <li data-evt="2021" class="evt"><span>2021</span><div>双一流</div></li>
+        </ul>
+        <div class="event-detail">
+          <img id="history-img" src="img/1958.jpg" alt="1958年创校">
+          <div class="txt">
+            <h2 id="history-title">1958年 创校</h2>
+            <p id="history-desc">1958年，福州大学正式创建，成为新中国背景下福建省最重要的高校之一，红色精神在此埋下火种。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 校园打卡点 -->
+    <section id="section-location" class="page-section">
+      <div class="hero hero-mini">
+        <img src="img/map-demo.jpg" alt="校园地图">
+        <div>
+          <h1>福大·校园打卡点</h1>
+          <p class="hero-desc">探索美丽校园，发现每一个精彩角落</p>
+        </div>
+      </div>
+      <div class="campus-map-area">
+        <div class="campus-map-container">
+          <img src="img/map-demo.jpg" alt="福大地图" class="campus-map">
+          <span class="point" data-id="lib" style="top:36%;left:46%;" title="图书馆"></span>
+          <span class="point" data-id="lake" style="top:60%;left:28%;" title="知明湖"></span>
+          <span class="point" data-id="gym" style="top:48%;left:67%;" title="体育馆"></span>
+        </div>
+        <div class="location-info" id="location-info">
+          <h2>点击地图上的红色圆点查看地点详情</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- 学院简介 -->
+    <section id="section-college" class="page-section">
+      <div class="hero hero-mini">
+        <img src="img/college.jpg" alt="学院大楼">
+        <div>
+          <h1>学院简介主页</h1>
+          <p class="hero-desc">知行合一·人才摇篮</p>
+        </div>
+      </div>
+      <nav class="college-nav">
+        <button class="college-tab-btn active" data-tab="tab1">学院介绍</button>
+        <button class="college-tab-btn" data-tab="tab2">教师风采</button>
+        <button class="college-tab-btn" data-tab="tab3">实验室介绍</button>
+      </nav>
+      <div class="college-tab-content" id="tab1" style="display:block;">
+        <h2>学院简介</h2>
+        <p>福州大学计算机与大数据学院，致力于前沿科学探索与创新人才培养，
+          设有多个本科及硕博专业，学风严谨，科研成果丰硕。</p>
+      </div>
+      <div class="college-tab-content" id="tab2">
+        <h2>教师风采</h2>
+        <div class="teachers">
+          <div class="teacher-card">
+            <img src="img/teacher1.jpg" alt="李明-教授">
+            <div>
+              <b>李明 教授</b><br>
+              <span>AI、数据挖掘、导师</span>
+            </div>
+          </div>
+          <div class="teacher-card">
+            <img src="img/teacher2.jpg" alt="王萍-副教授">
+            <div>
+              <b>王萍 副教授</b><br>
+              <span>软件工程、Web</span>
+            </div>
+          </div>
+          <div class="teacher-card">
+            <img src="img/teacher3.jpg" alt="张伟-讲师">
+            <div>
+              <b>张伟 讲师</b><br>
+              <span>机器人、智能硬件</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="college-tab-content" id="tab3">
+        <h2>实验室介绍</h2>
+        <div class="labs">
+          <div class="lab-card">
+            <img src="img/lab1.jpg" alt="AI实验室">
+            <div>
+              <b>人工智能实验室</b>
+              <p>专注于图像识别、语音分析、自动驾驶等人工智能应用研究。</p>
+            </div>
+          </div>
+          <div class="lab-card">
+            <img src="img/lab2.jpg" alt="Web实验室">
+            <div>
+              <b>Web与软件工程实验室</b>
+              <p>WEB开发、云计算、大型软件系统建设与实践。</p>
+            </div>
+          </div>
+          <div class="lab-card">
+            <img src="img/lab3.jpg" alt="智能硬件实验室">
+            <div>
+              <b>智能硬件实验室</b>
+              <p>机器人、嵌入式设计、传感器网络的创新与实现。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <span>&copy; 2025 福州大学•校园展示项目组</span>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>
