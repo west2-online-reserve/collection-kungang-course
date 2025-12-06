@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "D:/Program Files (x86)/Microsoft Visual Studio/code"
+		},
+		{
+			"path": "D:/Program Files (x86)/Microsoft Visual Studio/Markdown"
+		},
+		{
+			"path": "../../.."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp",
+			"顺序表.C": "cpp"
+		}
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": []
+	}
+}
