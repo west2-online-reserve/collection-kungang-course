@@ -111,3 +111,91 @@ footer {
   margin-bottom: 10px;
   font-size: 16px;
 }
+
+/* ---- 动画与交互增强部分 ---- */
+
+/* 页面淡入效果 */
+body {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 导航栏交互 */
+nav a {
+  position: relative;
+  padding: 8px 12px;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background: #fff;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+nav a:hover::after {
+  width: 60%;
+}
+
+nav a.active {
+  color: #ffd700;
+}
+
+/* 按钮动效 */
+.btn {
+  display: inline-block;
+  background: #A50034;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #8e002c;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(165, 0, 52, 0.3);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* 图片悬停动画 */
+.gallery img {
+  width: 250px;
+  border-radius: 8px;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.gallery img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(165, 0, 52, 0.4);
+}
+
+/* 时间轴节点出现动画 */
+.timeline .content {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.timeline .content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
