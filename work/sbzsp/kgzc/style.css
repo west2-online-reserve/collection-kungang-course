@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* =========================================
    1. 基础重置 (修复核心痛点)
    ========================================= */
@@ -14,15 +15,31 @@
 
 html {
     scroll-behavior: smooth;
+=======
+/* --- 基础设置 --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* 点击导航时平滑滚动 */
+>>>>>>> 137f49d370c138621374055bd00947ee3d863597
 }
 
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+<<<<<<< HEAD
     background-color: #f4f4f4; /* 背景色 */
+=======
+    background-color: #f4f4f4;
+>>>>>>> 137f49d370c138621374055bd00947ee3d863597
     color: #333;
     line-height: 1.6;
 }
 
+<<<<<<< HEAD
 /* =========================================
    2. 导航栏样式
    ========================================= */
@@ -30,6 +47,13 @@ body {
     background-color: #C8102E;
     color: white;
     position: sticky;
+=======
+/* --- 导航栏样式 --- */
+.navbar {
+    background-color: #C8102E; /* 福大红 */
+    color: white;
+    position: sticky; /* 粘性定位 */
+>>>>>>> 137f49d370c138621374055bd00947ee3d863597
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
@@ -74,14 +98,22 @@ body {
     border-bottom: 2px solid #fff;
 }
 
+<<<<<<< HEAD
 /* =========================================
    3. 布局容器
    ========================================= */
+=======
+/* --- 主体容器 --- */
+>>>>>>> 137f49d370c138621374055bd00947ee3d863597
 .container {
     max-width: 1000px;
     margin: 50px auto;
     padding: 0 20px;
+<<<<<<< HEAD
     min-height: 100vh;
+=======
+    min-height: 100vh; /* 确保页面够长以便滚动 */
+>>>>>>> 137f49d370c138621374055bd00947ee3d863597
 }
 
 .header {
@@ -100,19 +132,30 @@ body {
     color: #666;
 }
 
+<<<<<<< HEAD
 /* =========================================
    4. 时间轴 (关键修复区域)
    ========================================= */
+=======
+/* --- 时间轴样式 --- */
+>>>>>>> 137f49d370c138621374055bd00947ee3d863597
 .timeline {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
+<<<<<<< HEAD
     /* 增加底部内边距，确保红线足够长 */
     padding-bottom: 150px; 
     padding-top: 50px;
 }
 
 /* --- 中轴线 (红线) --- */
+=======
+    padding-bottom: 50px;
+}
+
+/* 中轴线 */
+>>>>>>> 137f49d370c138621374055bd00947ee3d863597
 .timeline::after {
     content: '';
     position: absolute;
@@ -121,22 +164,38 @@ body {
     top: 0;
     bottom: 0;
     left: 50%;
+<<<<<<< HEAD
     transform: translateX(-50%); /* 精确居中 */
     border-radius: 3px;
     z-index: 0;
 }
 
 /* --- 卡片容器 --- */
+=======
+    margin-left: -3px;
+    border-radius: 3px;
+}
+
+/* 卡片容器 */
+>>>>>>> 137f49d370c138621374055bd00947ee3d863597
 .card {
     padding: 10px 40px;
     position: relative;
     background-color: inherit;
     width: 50%;
+<<<<<<< HEAD
+=======
+    /* 动画初始状态 */
+>>>>>>> 137f49d370c138621374055bd00947ee3d863597
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.6s ease;
 }
 
+<<<<<<< HEAD
+=======
+/* 动画触发状态 */
+>>>>>>> 137f49d370c138621374055bd00947ee3d863597
 .card.show {
     opacity: 1;
     transform: translateY(0);
@@ -145,6 +204,7 @@ body {
 .left { left: 0; }
 .right { left: 50%; }
 
+<<<<<<< HEAD
 /* --- 圆点 (已加大尺寸) --- */
 .card::after {
     content: '';
@@ -261,3 +321,81 @@ body {
     
     .right { left: 0%; }
 }
+=======
+/* 时间轴圆点 */
+.card::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: white;
+    border: 4px solid #C8102E;
+    top: 20px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.right::after { left: -10px; }
+
+/* 内容盒子 */
+.content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.content:hover {
+    transform: translateY(-5px);
+}
+
+.content h2 {
+    color: #C8102E;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.content .year {
+    font-weight: bold;
+    color: #888;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* --- 回到顶部按钮 --- */
+#backBtn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: #C8102E;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: background-color 0.3s;
+}
+
+#backBtn:hover {
+    background-color: #a00d25;
+}
+
+/* --- 响应式适配 --- */
+@media screen and (max-width: 600px) {
+    .nav-links { display: none; } /* 手机隐藏菜单 */
+    .nav-container { justify-content: center; }
+    
+    .timeline::after { left: 31px; }
+    .card { width: 100%; padding-left: 70px; padding-right: 25px; }
+    .card::after { left: 21px; }
+    .right { left: 0%; }
+}
+>>>>>>> 137f49d370c138621374055bd00947ee3d863597
