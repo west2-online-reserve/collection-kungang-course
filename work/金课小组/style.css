@@ -188,6 +188,27 @@ section {
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+/* 图片展厅悬浮说明 */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+.gallery-desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0,39,70,0.8);
+    color: white;
+    font-size: 0.9rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+.gallery-item:hover .gallery-desc {
+    transform: translateY(0);
+}
+
 /* 全局图片美化 */
 img {
     border-radius: 8px; /* 统一圆角 */
@@ -268,6 +289,91 @@ img:hover {
 }
 .loader.hidden {
     display: none;
+}
+
+/* 红色校史问答 */
+.qa-container {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+.qa-item {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.qa-question {
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: linear-gradient(90deg, #fdf2f8, #f5fafe);
+    transition: all 0.3s ease;
+}
+.qa-question span {
+    color: #003A70;
+    font-weight: 600;
+}
+.qa-question .icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #C8102E;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+.qa-answer {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+}
+.qa-answer p {
+    color: #333;
+    padding: 1rem 0;
+}
+/* 展开状态 */
+.qa-item.active .qa-answer {
+    max-height: 200px;
+    padding: 0 1.5rem 1.5rem;
+}
+.qa-item.active .qa-question .icon {
+    transform: rotate(45deg);
+    background: #005EB8;
+}
+
+/* 回到顶部按钮 */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #C8102E, #005EB8);
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 /* 响应式适配 */
