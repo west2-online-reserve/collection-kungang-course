@@ -6,6 +6,12 @@
     font-family: "Microsoft Yahei", sans-serif;
 }
 
+/* 全局字体层级 */
+h1 { font-size: 2.5rem; font-weight: 700; }
+h2 { font-size: 2rem; font-weight: 600; }
+h3 { font-size: 1.5rem; font-weight: 500; }
+p { font-size: 1rem; line-height: 1.6; margin-bottom: 1rem; }
+
 /* 容器样式 */
 .container {
     width: 90%;
@@ -31,6 +37,11 @@
 
 .navbar .logo img {
     height: 50px;
+    transition: all 0.3s ease;
+}
+
+.navbar .logo img:hover {
+    transform: scale(1.1) rotate(5deg); /* 新增：hover放大+旋转 */
 }
 
 .navbar nav {
@@ -52,6 +63,12 @@
 
 .navbar a:hover {
     color: #005EB8;
+}
+
+.navbar a.active {
+    color: #005EB8; /* 福大蓝高亮 */
+    font-weight: 700;
+    border-bottom: 2px solid #005EB8;
 }
 
 /* 横幅 */
@@ -86,6 +103,12 @@
     position: relative;
 }
 
+/* 通用板块间距 */
+section {
+    padding: 4rem 0; /* 统一上下内边距 */
+    margin: 2rem 0; /* 统一上下外边距 */
+}
+
 .section-title::after {
     content: "";
     display: block;
@@ -114,11 +137,26 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     text-align: center;
     transition: 0.3s;
+    position: relative; /* 新增 */
+    overflow: hidden; /* 新增 */
 }
-
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+/* 新增：hover底部渐变条 */
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #C8102E, #005EB8);
+    transition: width 0.3s ease;
+}
+.card:hover::after {
+    width: 100%;
 }
 
 .card-icon {
@@ -150,6 +188,16 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+/* 全局图片美化 */
+img {
+    border-radius: 8px; /* 统一圆角 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 轻微阴影 */
+    transition: all 0.3s ease; /* 过渡动画 */
+}
+img:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* hover加深阴影 */
+}
+
 .gallery-img {
     width: 100%;
     height: 250px;
@@ -179,6 +227,47 @@
     text-align: center;
     padding: 2rem 0;
     margin-top: 2rem;
+}
+
+/* 滚动渐入动画 */
+.fade-in-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 页面加载动画 */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.loader img {
+    height: 80px;
+    animation: spin 1s infinite linear;
+}
+.loader p {
+    margin-top: 1rem;
+    color: #C8102E;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.loader.hidden {
+    display: none;
 }
 
 /* 响应式适配 */

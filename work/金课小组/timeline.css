@@ -71,6 +71,23 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+/* 时间轴内容hover放大 */
+.timeline-content {
+    transition: all 0.3s ease;
+}
+.timeline-item:hover .timeline-content {
+    transform: scale(1.02);
+    box-shadow: 0 5px 20px rgba(0,94,184,0.2); /* 蓝阴影 */
+}
+/* 时间轴圆点hover放大 */
+.timeline-item::after {
+    transition: all 0.3s ease;
+}
+.timeline-item:hover::after {
+    transform: scale(1.2);
+    border-color: #0078D4; /* 浅蓝 */
+}
+
 .timeline-date {
     font-size: 1.2rem;
     font-weight: bold;
