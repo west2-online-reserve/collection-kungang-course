@@ -733,3 +733,216 @@ body {
     padding: 2px 10px;
     border-radius: 4px;
 }
+
+/* =========================================
+   【修复版】顶部导航栏 & 夜间模式按钮
+   ========================================= */
+
+/* 1. 导航栏外壳 */
+.navbar {
+    background-color: #C8102E;
+    color: white;
+    position: sticky; /* 确保它粘在顶部 */
+    top: 0;
+    width: 100%;      /* 确保宽度占满 */
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    height: 60px;     /* 固定高度，防止跳动 */
+}
+
+/* 2. 导航栏容器布局 (Flexbox) */
+.nav-container {
+    max-width: 1200px;
+    height: 100%;     /* 填满外壳高度 */
+    margin: 0 auto;
+    padding: 0 20px;
+    
+    /* 关键布局设置 */
+    display: flex;
+    align-items: center; /* 垂直绝对居中 */
+    /* 注意：不再使用 space-between，而是用 margin-left: auto 来推 */
+}
+
+/* 3. Logo 区域 */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    /* 防止 Logo 被压缩 */
+    flex-shrink: 0; 
+}
+
+/* 4. 菜单链接列表 */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    
+    /* ▼▼▼ 核心技巧 ▼▼▼ */
+    /* 自动占据左侧所有空余空间，从而把自己推到最右边 */
+    margin-left: auto; 
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+/* 5. 夜间模式切换按钮 (小月亮) */
+#theme-toggle {
+    background: transparent; /* 透明背景 */
+    border: 1px solid rgba(255,255,255,0.3); /* 淡淡的边框 */
+    color: white;
+    cursor: pointer;
+    
+    /* 大小控制 */
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; /* 正圆形 */
+    
+    /* 布局控制 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px; /* 离左边的菜单稍微远一点 */
+    transition: 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: rgba(255,255,255,0.2);
+    transform: rotate(15deg); /* 悬停时稍微转一下，增加趣味 */
+}
+
+#theme-toggle i {
+    font-size: 16px; /* 图标大小 */
+}
+
+/* 手机端适配修正 */
+@media screen and (max-width: 600px) {
+    /* 手机上隐藏文字菜单 */
+    .nav-links { display: none; }
+    
+    /* 手机上只保留 Logo 和 小月亮，并把小月亮推到最右 */
+    #theme-toggle { margin-left: auto; }
+}
+
+/* 1. 切换按钮样式 */
+.theme-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-left: 20px;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.theme-btn:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* 2. 夜间模式全局背景与文字 */
+body.dark-mode {
+    background-color: #121212 !important; /* 深黑背景 */
+    color: #e0e0e0;            /* 浅灰文字 */
+}
+
+/* 3. 覆盖所有白色卡片的背景 */
+body.dark-mode .content, 
+body.dark-mode .header, 
+body.dark-mode .faculty-card,
+body.dark-mode .program-card,
+body.dark-mode .stat-card,
+body.dark-mode .modal-content,
+body.dark-mode .header /* 针对地图页头部 */
+{
+    background-color: #1e1e1e !important; /* 卡片变深灰 */
+    color: #e0e0e0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.8); /* 阴影加深 */
+    border: 1px solid #333; /* 加个微弱的边框防止混成一团 */
+}
+
+/* 4. 标题颜色高亮 */
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3,
+body.dark-mode .faculty-info h3,
+body.dark-mode .program-card h3,
+body.dark-mode .stat-card h3 {
+    color: #ff6b81 !important; /* 夜间模式下用亮一点的粉红，比深红更清晰 */
+}
+
+/* 5. 普通文字变暗 */
+body.dark-mode p,
+body.dark-mode .faculty-info p,
+body.dark-mode .program-card p,
+body.dark-mode .stat-card p {
+    color: #bbb !important;
+}
+
+/* 6. 时间轴特定样式修复 */
+body.dark-mode .content .year {
+    color: #aaa;
+}
+
+body.dark-mode .card::after {
+    background-color: #1e1e1e; /* 圆点中心变黑 */
+    border-color: #ff6b81;     /* 圆点边框变亮红 */
+}
+
+body.dark-mode .timeline::after {
+    background-color: #ff6b81; /* 中轴线变亮红 */
+}
+
+/* 7. 校园地图特定修复 */
+body.dark-mode .pin-label {
+    background: rgba(30, 30, 30, 0.9);
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark-mode .modal p {
+    color: #ccc;
+}
+
+/* 8. 学院风采特定修复 */
+body.dark-mode .program-card {
+    border-left: 5px solid #ff6b81;
+}
+
+body.dark-mode .program-card:hover {
+    background-color: #C8102E !important; /* 悬停还是保持福大红 */
+}
+
+body.dark-mode .icon-bg i {
+    color: #ff6b81;
+}
+
+body.dark-mode .btn-profile {
+    border-color: #ff6b81;
+    color: #ff6b81;
+}
+
+body.dark-mode .btn-profile:hover {
+    background-color: #ff6b81;
+    color: white;
+}
