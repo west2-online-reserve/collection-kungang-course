@@ -12,7 +12,7 @@
 <nav class="navbar">
     <div class="nav-container">
         <div class="logo">
-            <img src="C:\Users\Zhang\Documents\demo\Git\collection-kungang-course\work\sbzsp\image\fzu.png" alt="校徽" style="height: 32px; width: auto;" class="nav-icon">
+            <img src="image\fzu.png" alt="校徽" style="height: 32px; width: auto;" class="nav-icon">
             <span>福州大学 | 印象福大</span>
         </div>
         <ul class="nav-links">
@@ -27,7 +27,7 @@
 <div class="container">
     
     <div class="header" style="
-    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('C:\\Users\\Zhang\\Documents\\demo\\Git\\collection-kungang-course\\work\\sbzsp\\image\\image_Eastgate.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('image\\image_Eastgate.jpg');
     
     background-size: cover;
     background-position: center;
@@ -41,14 +41,27 @@
     margin-bottom: 30px;
     text-align: center;
 ">
-    <h1>福州大学旗山校区导览</h1>
+    <h1 style="color: #FFFFFF;">福州大学旗山校区导览</h1>
     
-    <p style="background-color: #C8102E; display: inline-block; padding: 2px 10px; border-radius: 4px; color: white;">
+    <p style="
+        display: inline-block;       /* 保持块状以便设置背景 */
+        padding: 5px 15px;           /* 内边距：上下5px，左右15px */
+        border-radius: 20px;         /* 圆角：调大一点显得更圆润 */
+        
+        /* 1. 修改位置 (通过外边距控制) */
+        margin-top: 120px;    
+
+        /* 2. 背景透明度 (福大红的 RGBA 版) */
+        background-color: rgba(200, 16, 46, 0.6);
+
+        /* 3. 文字透明度 */
+        color: rgba(255, 255, 255, 0.8);
+    ">
         点击地图上的红点，探索美丽校园
     </p>
 </div>
     <div class="map-wrapper">
-        <img src="C:\Users\Zhang\Documents\demo\Git\collection-kungang-course\work\sbzsp\image\image_map.jpg" alt="校园地图" class="map-image">
+        <img src="image\image_map.jpg" alt="校园地图" class="map-image">
 
         <div class="map-pin" data-id="1" style="top: 45%; left: 50%;">
             <div class="pin-pulse"></div>

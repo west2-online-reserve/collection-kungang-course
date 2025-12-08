@@ -80,7 +80,7 @@ body {
 .hero-banner {
     width: 100%;
     height: 400px; /* 大图高度 */
-    background-image: url('C:\\Users\\Zhang\\Documents\\demo\\Git\\collection-kungang-course\\work\\sbzsp\\image\\image_Hero Banner.jpg');
+    background-image: url('image\\image_Hero Banner.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -312,7 +312,7 @@ body {
 .college-hero {
     width: 100%;
     height: 700px;
-    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('C:\\Users\\Zhang\\Documents\\demo\\Git\\collection-kungang-course\\work\\sbzsp\\image\\image_CSbuilding.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('image\\image_CSbuilding.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
