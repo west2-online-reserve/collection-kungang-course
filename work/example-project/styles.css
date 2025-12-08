@@ -35,11 +35,15 @@ body {
 }
 
 .logo {
-    width: 79px;
-    height: 79px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex;          /* 1. 开启弹性布局 */
+    align-items: center;    /* 2. 垂直居中对齐 */
+    gap: 12px;              /* 3. 图片和文字之间的间距 */
+
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    height: 100%;           /* 确保容器有高度 */
 }
 
 .logo img {
@@ -130,4 +134,10 @@ body {
 
 .footer-right {
     text-align: right;
+}
+
+.logo span {
+    position: relative;
+    top: -5px;  /* 如果觉得字太高，就写 1px 或 2px */
+    /* top: -1px; 如果觉得字太低，就写 -1px 或 -2px */
 }
