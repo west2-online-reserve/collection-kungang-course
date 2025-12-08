@@ -1,0 +1,24 @@
+# 网站图标（Favicon）说明
+
+浏览器标签页的图标已设置为使用 logo.png 文件。
+
+## 当前设置：
+- 图标文件：/logo.png
+- 位置：code/frontend/public/logo.png
+- 格式：PNG（推荐）
+
+## 如果需要更好的兼容性：
+你也可以创建多种尺寸的图标：
+
+1. favicon.ico (16x16, 32x32) - 传统格式
+2. favicon-16x16.png
+3. favicon-32x32.png
+4. apple-touch-icon.png (180x180) - iOS 设备
+
+## 刷新图标：
+如果上传了新图标但浏览器还显示旧图标：
+1. 清除浏览器缓存
+2. 强制刷新页面（Ctrl+F5 或 Cmd+Shift+R）
+3. 关闭并重新打开浏览器标签页
+
+当前配置会自动使用 logo.png 作为网站图标。
