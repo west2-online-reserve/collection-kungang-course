@@ -23,7 +23,7 @@ window.addEventListener('scroll', function() {
 // 图片加载失败兜底
 document.querySelectorAll('img').forEach(img => {
     img.addEventListener('error', function() {
-        this.src = '"C:/Users/lyy/Desktop/图片1.png"'; // 可添加默认图片
+        this.src = '"image/图片1.png"'; // 可添加默认图片
         this.alt = '图片加载失败';
     });
 });
