@@ -28,7 +28,7 @@
 
 ### 历史探索
 - 历史事件浏览与时间轴展示
-- 历史博物馆页面，详细展示校园历史文化
+- 历史博物馆页面，详细展示校园文化
 - 按时间和主题分类的历史内容
 
 ### 校园打卡
@@ -70,11 +70,11 @@
 以下是校园打卡系统的功能演示视频：
 
 <video  controls>
-  <source src="./ShowVideo.mp4" type="video/mp4">
+  <source src="https://github.com/164321595/collection-kungang-course/releases/download/video-v1/ShowVideo.mp4" type="video/mp4">
   您的浏览器不支持 HTML5 视频标签。
 </video>
 
-或者您可以直接下载视频文件：[ShowVideo.mp4](./ShowVideo.mp4)
+或者您可以直接下载视频文件：[ShowVideo.mp4](https://github.com/164321595/collection-kungang-course/releases/download/video-v1/ShowVideo.mp4)
 
 ## 文档
 
