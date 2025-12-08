@@ -60,32 +60,32 @@ const locationData = {
     1: {
         title: "旗山校区图书馆",
         desc: "福州大学旗山校区图书馆是校园的地标性建筑，外观呈正方形，宏伟大气。馆藏资源丰富，是学子们求知探索的殿堂。每当夜幕降临，灯火通明，成为校园最美的风景线。",
-        img: "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" // 建议替换为 images/library.jpg
+        img: "image\\image_lib.jpg" 
     },
     2: {
         title: "东门",
         desc: "福州大学旗山校区的主校门，气势恢宏。校门设计融合了传统与现代元素，见证了无数新生的到来和毕业生的离去，是福大人的精神图腾。",
-        img: "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" // 建议替换为 images/gate.jpg
+        img: "image\\image_Eastgate.jpg"
     },
     3: {
         title: "第一田径场",
         desc: "第一田径场是福大校园活力的中心，这里不仅是每年校运会的主战场，也是师生们日常锻炼、夜跑和举办各类大型户外活动的首选之地。",
-        img: "https://images.unsplash.com/photo-1577269182347-660c1d177301?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" // 建议替换为 images/gym.jpg
+        img: "image\\image_playground.jpg" 
     },
     4: {
         title: "福友阁",
         desc: "位于校园中心湖畔，风景秀丽。福友阁是校友捐建的标志性建筑，古色古香，常有师生在此晨读或休憩，是校园文化的重要组成部分。",
-        img: "https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" // 建议替换为 images/pavilion.jpg
+        img: "image\\image_fuyouge.jpg" 
     },
     5: {
         title: "计算机与大数据学院楼",
         desc: "计算机与大数据学院楼内设有国家级实验教学示范中心与高性能计算平台，日夜闪烁的代码光影见证了无数IT学子“键盘敲击未来”的梦想，是校园里科技感与创新氛围最浓郁的地标之一。",
-        img: "https://images.unsplash.com/photo-1577269182347-660c1d177301?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" // 建议替换为 images/gym.jpg
+        img: "image\\image_CSbuilding.jpg" 
     },
     6: {
         title: "晋江楼",
         desc: "晋江楼是福州大学旗山校区体量宏大、气势恢宏的标志性建筑群之一，由晋江市政府捐资兴建。它融合了闽南红砖古厝元素与现代建筑美学，不仅是理工科思维碰撞的殿堂，更象征着校地合作、产教融合的深厚情谊",
-        img: "https://images.unsplash.com/photo-1577269182347-660c1d177301?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" // 建议替换为 images/gym.jpg
+        img: "image\\image_jinliangbuilding.jpg"
     }
 };
 
