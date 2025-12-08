@@ -12,7 +12,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.style.backgroundColor = '#a80e24';
+        navbar.style.backgroundColor = '#003A70';
         navbar.style.padding = '0.8rem 0';
     } else {
         navbar.style.backgroundColor = '#c8102e';
@@ -23,7 +23,7 @@ window.addEventListener('scroll', function() {
 // 图片加载失败兜底
 document.querySelectorAll('img').forEach(img => {
     img.addEventListener('error', function() {
-        this.src = 'images/default.jpg'; // 可添加默认图片
+        this.src = '"C:/Users/lyy/Desktop/图片1.png"'; // 可添加默认图片
         this.alt = '图片加载失败';
     });
 });

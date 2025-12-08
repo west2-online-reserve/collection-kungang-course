@@ -51,12 +51,12 @@
 }
 
 .navbar a:hover {
-    color: #ffd700;
+    color: #005EB8;
 }
 
 /* 横幅 */
 .banner {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../images/banner.jpg");
+    background: linear-gradient(rgba(200, 16, 46, 0.6), rgba(0, 94, 184, 0.6)), url("https://vcg03.cfp.cn/creative/vcg/800/new/VCG211567577542.jpg");
     background-size: cover;
     background-position: center;
     height: 80vh;
@@ -123,7 +123,7 @@
 
 .card-icon {
     font-size: 2.5rem;
-    color: #c8102e;
+    color: #005EB8;
     margin-bottom: 1rem;
 }
 
@@ -166,7 +166,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(200, 16, 46, 0.8);
+    background: linear-gradient(90deg, rgba(200, 16, 46, 0.8), rgba(0, 94, 184, 0.8));
     color: white;
     padding: 1rem;
     text-align: center;
@@ -174,7 +174,7 @@
 
 /* 页脚 */
 .footer {
-    background-color: #333;
+    background-color: #003A70;
     color: white;
     text-align: center;
     padding: 2rem 0;
