@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="filename" content="fzu_ccds_homepage.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福州大学计算机与大数据学院(软件学院)、人工智能学院</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a3c6c;      /* 福州大学蓝 */
+            --secondary-color: #d53a35;    /* 辅助色 - 红色 */
+            --accent-color: #f0a800;       /* 点缀色 - 金色 */
+            --light-bg: #f6f9fc;           /* 浅色背景 */
+            --dark-text: #2d3748;          /* 深色文本 */
+            --light-text: #718096;         /* 浅色文本 */
+            --white: #ffffff;              /* 白色 */
+            --gray: #e2e8f0;               /* 边框灰色 */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+            --max-content-width: 1280px;
+            
+            /* 字体大小系统 - 使用rem单位 */
+            font-size: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Serif SC', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            position: relative;
+        }
+
+        /* 页面容器 */
+        .page-container {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        /* 顶部标题栏 */
+        .top-bar {
+            background: linear-gradient(to right, var(--primary-color), #12305e);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .university-name {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .university-name svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--white);
+        }
+
+        .university-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .utils {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .utils a {
+            color: var(--white);
+            font-size: 0.9rem;
+            opacity: 0.9;
+            transition: var(--transition);
+        }
+
+        .utils a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        /* 导航栏 */
+        nav {
+            background: var(--white);
+            padding: 0.8rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: var(--max-content-width);
+            margin: 0 auto;
+        }
+
+        .college-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .college-logo-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links li a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        .search-bar {
+            display: flex;
+            border: 1px solid var(--gray);
+            border-radius: 30px;
+            overflow: hidden;
+            padding: 0.4rem;
+        }
+
+        .search-bar input {
+            border: none;
+            padding: 0.3rem 0.8rem;
+            width: 180px;
+            outline: none;
+        }
+
+        .search-bar button {
+            background: transparent;
+            border: none;
+            padding: 0 0.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* 轮播图区域 */
+        .slider-section {
+            background: linear-gradient(rgba(26, 60, 108, 0.8), rgba(26, 60, 108, 0.8)), 
+                        url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1800&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 3rem 2rem;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .slider-content {
+            max-width: var(--max-content-width);
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+
+        .slider-content h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .slider-content p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .slider-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .slider-btn {
+            background: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .slider-btn.outline {
+            background: transparent;
+            border: 2px solid var(--white);
+        }
+
+        .slider-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 主要内容区块 */
+        .main-content {
+            padding: 4rem 2rem;
+            max-width: var(--max-content-width);
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-title i {
+            color: var(--secondary-color);
+        }
+
+        .more-link {
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .more-link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        /* 新闻公告区域 */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .news-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .news-card:hover .news-img img {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .news-date {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .news-desc {
+            color: var(--light-text);
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 0.95rem;
+            align-self: flex-start;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            color: var(--secondary-color);
+            gap: 0.8rem;
+        }
+
+        /* 三个特色栏目 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .feature-desc {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+        }
+
+        /* 师资队伍 */
+        .teachers-section {
+            background: linear-gradient(to bottom, #f0f4f9, #e3eaf3);
+            padding: 4rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .teachers-container {
+            max-width: var(--max-content-width);
+            margin: 0 auto;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .teacher-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .teacher-img {
+            height: 260px;
+            overflow: hidden;
+        }
+
+        .teacher-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .teacher-card:hover .teacher-img img {
+            transform: scale(1.05);
+        }
+
+        .teacher-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .teacher-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--primary-color);
+        }
+
+        .teacher-title {
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.8rem;
+        }
+
+        .teacher-research {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        /* 实验室介绍 */
+        .labs-section {
+            margin: 4rem 0;
+        }
+
+        .labs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .lab-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .lab-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .lab-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .lab-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .lab-card:hover .lab-img img {
+            transform: scale(1.05);
+        }
+
+        .lab-content {
+            padding: 1.5rem;
+        }
+
+        .lab-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .lab-desc {
+            color: var(--light-text);
+            margin-bottom: 1.2rem;
+        }
+
+        .lab-equipments {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .equipment-tag {
+            background: var(--light-bg);
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 30px;
+            border: 1px solid var(--gray);
+        }
+
+        /* 页脚 */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            max-width: var(--max-content-width);
+            margin: 0 auto;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            opacity: 0.85;
+            margin-bottom: 1.2rem;
+        }
+
+        .quick-links {
+            list-style: none;
+        }
+
+        .quick-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .quick-links a {
+            color: var(--white);
+            opacity: 0.85;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .quick-links a i {
+            margin-right: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+
+        .quick-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .contact-info div {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info i {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            min-width: 24px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+            max-width: var(--max-content-width);
+            margin: 3rem auto 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 980px) {
+            :root {
+                font-size: 15px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .slider-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                font-size: 14px;
+            }
+            
+            .top-bar {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 0.8rem;
+            }
+            
+            .slider-section {
+                padding: 2rem 1rem;
+            }
+            
+            .slider-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .slider-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                font-size: 13px;
+            }
+            
+            .feature-card, .teacher-card, .lab-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- 顶部标题栏 -->
+        <div class="top-bar">
+            <div class="university-name">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="8" y="8" width="48" height="48" rx="8" fill="#ffffff" />
+                    <path d="M32,10L20,25L32,40L44,25L32,10Z" fill="#1a3c6c"/>
+                    <circle cx="32" cy="25" r="6" fill="#d53a35"/>
+                </svg>
+                <h1 class="university-text">福州大学</h1>
+            </div>
+            <div class="utils">
+                <a href="#"><i class="fas fa-envelope"></i> 邮箱</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> 地图</a>
+                <a href="#"><i class="fas fa-sign-in-alt"></i> 登录</a>
+            </div>
+        </div>
+
+        <!-- 导航栏 -->
+        <nav>
+            <div class="nav-container">
+                <div class="college-logo">
+                    <h2 class="college-logo-text">计算机与大数据学院(软件学院)</h2>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="#">学院首页</a></li>
+                    <li><a href="#">学院概况</a></li>
+                    <li><a href="#">师资队伍</a></li>
+                    <li><a href="#">人才培养</a></li>
+                    <li><a href="#">科学研究</a></li>
+                    <li><a href="#">招生就业</a></li>
+                    <li><a href="#">学生工作</a></li>
+                    <li><a href="#">党群工作</a></li>
+                </ul>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="搜索...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 轮播图区域 -->
+        <section class="slider-section">
+            <div class="slider-content">
+                <h1>创新驱动发展 · 科技引领未来</h1>
+                <p>福州大学计算机与大数据学院(软件学院)、人工智能学院致力于培养高素质、创新型人才，在基础理论与应用研究领域取得卓越成就</p>
+                <div class="slider-buttons">
+                    <button class="slider-btn">了解学院</button>
+                    <button class="slider-btn outline">查看招生简章</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 主要内容 -->
+        <div class="main-content">
+            <!-- 新闻公告 -->
+            <div class="news-section">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-newspaper"></i> 学院新闻</h2>
+                    <a href="#" class="more-link">更多新闻 <i class="fas fa-angle-right"></i></a>
+                </div>
+                
+                <div class="news-grid">
+                    <div class="news-card">
+                        <div class="news-img">
+                            <img src="https://ccds.fzu.edu.cn/__local/7/AB/5E/82F8729A65ED9C750EF9171FBD7_D1A62568_1EBEE.jpg" alt="学术会议">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date"><i class="far fa-calendar-alt"></i> 2025-11-23</div>
+                            <h3 class="news-title">大数据智能教育部工程研究中心技术委员会会议顺利召开</h3>
+                            <p class="news-desc">会上，陈国龙书记首先代表学校对出席会议的专家表示欢迎，对技术委员会长期以来对学校和中心的支持表示感谢，并为新增补的技术委员会委员颁发聘书。</p>
+                            <a href="#" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <div class="news-img">
+                            <img src="https://ccds.fzu.edu.cn/__local/2/81/30/09B1D74B5F968443EB33F32E520_C9A5F042_A146C.png" alt="共建活动">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date"><i class="far fa-calendar-alt"></i> 2025-11-13</div>
+                            <h3 class="news-title">党建引领聚合力 校企共建促发展 —— 信息安全与网络工程系党支部与中国移动福建公司网络部第二党支部开展共建活动</h3>
+                            <p class="news-desc">我院信息安全与网络工程系党支部前往省移动通信公司，与中国移动福建公司网络部第二党支部联合开展主题党建共建活动，以党建红引领校企合作新路径。</p>
+                            <a href="#" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <div class="news-img">
+                            <img src="https://ccds.fzu.edu.cn/__local/7/AE/D8/5998CD0D32E48ABF39CDAF94650_475AFBCF_13C1FB.png" alt="党史学习">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date"><i class="far fa-calendar-alt"></i> 2025-11-07</div>
+                            <h3 class="news-title">山水印记映初心，砥砺奋进担使命 ——计算机与大数据学院教职工赴下党乡开展党史学习教育暨秋游活动</h3>
+                            <p class="news-desc">学院教职工感受习近平总书记在福建工作期间“三进下党”访贫问苦、现场办公、解决困难，推动摆脱贫困的艰辛历程，领悟习近平总书记提出的“弱鸟先飞”“滴水穿石”先进理念。</p>
+                            <a href="#" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 特色栏目 -->
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-star"></i> 特色栏目</h2>
+                <a href="#" class="more-link">查看更多 <i class="fas fa-angle-right"></i></a>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="feature-title">人才培养</h3>
+                    <p class="feature-desc">学院设有多个本科专业和研究生培养项目，培养适应社会发展需要的复合型人才</p>
+                    <a href="#" class="read-more">了解更多 <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="feature-title">科研平台</h3>
+                    <p class="feature-desc">多个省部级重点实验室和工程研究中心，为科研创新提供强大支撑</p>
+                    <a href="#" class="read-more">了解更多 <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="feature-title">合作交流</h3>
+                    <p class="feature-desc">与国内外多所高校和研究机构建立长期合作关系，开展学术交流与联合培养</p>
+                    <a href="#" class="read-more">了解更多 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 师资队伍 -->
+        <section class="teachers-section">
+            <div class="teachers-container">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-users"></i> 师资队伍</h2>
+                    <a href="#" class="more-link">更多教师 <i class="fas fa-angle-right"></i></a>
+                </div>
+                
+                <div class="teachers-grid">
+                    <div class="teacher-card">
+                        <div class="teacher-img">
+                            <img src="https://ccds.fzu.edu.cn/__local/7/DB/AE/DF5AF61F74E2F804BF0B00824A5_24BC46B9_2225E.jpg?e=.jpg" alt="教授">
+                        </div>
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">刘耿耿 教授</h3>
+                            <p class="teacher-title">博士生导师</p>
+                            <p class="teacher-research">研究方向：EDA算法、计算智能及其应用等</p>
+                        </div>
+                    </div>
+                    
+                    <div class="teacher-card">
+                        <div class="teacher-img">
+                            <img src="https://ccds.fzu.edu.cn/__local/3/AB/5C/10D109966CA72E7CEC1731195DF_96545AB1_3ACFE9.jpg" alt="教授">
+                        </div>
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">陈明志 博士/教授级高工</h3>
+                            <p class="teacher-title">博士生导师</p>
+                            <p class="teacher-research">长期从事加密通信领域科研与产业化</p>
+                        </div>
+                    </div>
+                    
+                    <div class="teacher-card">
+                        <div class="teacher-img">
+                            <img src="https://ccds.fzu.edu.cn/__local/8/59/9D/A69952735E961B23A6BBB0C1E79_C2E5FE82_8F375.jpg" alt="教授">
+                        </div>
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">陈哲毅 博士</h3>
+                            <p class="teacher-title">博士生导师</p>
+                            <p class="teacher-research">研究方向：云/边缘计算、资源优化、深度学习、强化学习</p>
+                        </div>
+                    </div>
+                    
+                    <div class="teacher-card">
+                        <div class="teacher-img">
+                            <img src="https://ccds.fzu.edu.cn/__local/3/56/EC/1D318B7B9EFCF9873A48D0B3D70_65419AAF_3C617.jpg" alt="教授">
+                        </div>
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">程红举 教授</h3>
+                            <p class="teacher-title">博士生导师、硕士生导师</p>
+                            <p class="teacher-research">研究方向：边缘计算、机器学习、多模态、数字孪生、区块链</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实验室介绍 -->
+        <div class="main-content">
+            <div class="labs-section">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-flask"></i> 实验室与平台</h2>
+                    <a href="#" class="more-link">更多实验室 <i class="fas fa-angle-right"></i></a>
+                </div>
+                
+                <div class="labs-grid">
+                    <div class="lab-card">
+                        <div class="lab-img">
+                            <img src="https://ccds.fzu.edu.cn/__local/F/FC/C1/9411E845A15CF89E635E647F266_8DAE18B5_865F2.png" alt="实验室">
+                        </div>
+                        <div class="lab-content">
+                            <h3 class="lab-title">信息安全专业实验室</h3>
+                            <p class="lab-desc">主要承担密码学综合设计实验，网络信息对抗与安全实验，内容安全与信息隐藏实验及毕业设计与实习等的实验教学任务。</p>
+                            <div class="lab-equipments">
+                                <span class="equipment-tag">安全基础支撑实验平台</span>
+                                <span class="equipment-tag">安全网络隔离实验平台</span>
+                                <span class="equipment-tag">安全检测防护实验平台</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lab-card">
+                        <div class="lab-img">
+                            <img src="https://ccds.fzu.edu.cn/__local/5/92/89/FCA0A494F16FEBFF9C5F7B969B9_A493A778_67796.png" alt="实验室">
+                        </div>
+                        <div class="lab-content">
+                            <h3 class="lab-title">计算机网络工程专业实验室</h3>
+                            <p class="lab-desc">主要承担局域网技术实验、网络程序设计实践等的实验教学任务。在实验室内，学生可以实现一个局域网，包括物理连接、网络操作系统安装设置、网络连通实验，可以完成Internet技术的应用及各类服务器的配置等实验，可以进行网络设备操作使用、维护、连接与组合等基本实验技能的训练等。</p>
+                            <div class="lab-equipments">
+                                <span class="equipment-tag">局域网技术实验</span>
+                                <span class="equipment-tag">网络程序设计实践</span>
+                                <span class="equipment-tag">网络工程</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lab-card">
+                        <div class="lab-img">
+                            <img src="https://ccds.fzu.edu.cn/__local/C/C2/85/A0A4CF459A53313B4B61CF17691_712076AF_CDBC6.png" alt="实验室">
+                        </div>
+                        <div class="lab-content">
+                            <h3 class="lab-title">软件工程专业实验室</h3>
+                            <p class="lab-desc">主要承担高级语言程序设计实践、算法与数据结构实验、操作系统实验、数据库应用实践、软件工程实践、大型数据库系统实训、Linux操作系统设计实践、编译系统设计实践、面向对象设计方法UML、信息系统实训、计算机基础训练、智能系统综合设计、统计计算和统计软件、数学软件与数学实验等实验教学任务。</p>
+                            <div class="lab-equipments">
+                                <span class="equipment-tag">软件工程</span>
+                                <span class="equipment-tag">数据库应用实践</span>
+                                <span class="equipment-tag">操作系统实验</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>学院简介</h3>
+                    <p>>>福州大学计算机与大数据学院(软件学院)的前身为福州大学数学力学系，成立于1958年福州大学创建之时。1962年改名数学系。1977年设置应用数学、计算数学、计算机软件、计算机技术专业。1982年成立计算机科学系。2003年6月，为进一步秉承理工结合的办学特色，促进基础学科和应用学科互动发展，两系合并成立了数学与计算机科学学院。2009年10月，数学与计算机科学学院和软件学院进行实质性整合。2021年5月，为了适应当前学科发展的需求，撤销数学与计算机科学学院，成立了计算机与大数据学院。六十多年来，学院为国家和地区输送了大量专业人才，涌现了以中国科学院软件研究所林惠民院士等为代表的一批国内外知名学者。</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>快速链接</h3>
+                    <ul class="quick-links">
+                        <li><a href="#"><i class="fas fa-angle-right"></i> 学院机构</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> 本科生教育</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> 研究生教育</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> 科研项目</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> 学生工作</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> 下载中心</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>学院地址</h3>
+                    <div class="contact-info">
+                        <div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>福州市闽侯县学园路2号<br>计算机与大数据学院(软件学院)、人工智能学院</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2020 - 2021 福州大学计算机与大数据学院/软件学院. 版权所有. 保留所有权利</p>
+            </div>
+        </footer>
+    </div>
+<script type="text/javascript" src="https://local.steampp.net/1"></script></body>
+</html>
