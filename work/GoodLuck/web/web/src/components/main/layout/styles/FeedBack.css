@@ -1,0 +1,295 @@
+.feedback-modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.feedback-modal {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.close-btn:hover {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.icon-close::before {
+  content: '×';
+}
+
+.modal-content {
+  padding: 24px;
+  max-height: calc(90vh - 140px);
+  overflow-y: auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+}
+
+.required {
+  color: #ff4757;
+}
+
+.feedback-textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+  box-sizing: border-box;
+}
+
+.feedback-textarea:focus {
+  outline: none;
+  border-color: #4a6cf7;
+  box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.2);
+}
+
+.char-count {
+  text-align: right;
+  font-size: 12px;
+  color: #888;
+  margin-top: 5px;
+}
+
+.email-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+  box-sizing: border-box;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: #4a6cf7;
+  box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.2);
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.cancel-btn,
+.submit-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 80px;
+}
+
+.cancel-btn {
+  background: #f8f9fa;
+  color: #555;
+  border: 1px solid #ddd;
+}
+
+.cancel-btn:hover {
+  background: #e9ecef;
+}
+
+.submit-btn {
+  background: #4a6cf7;
+  color: white;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #3a5ce5;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(74, 108, 247, 0.3);
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 成功提示弹窗 */
+.success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  animation: fadeIn 0.3s ease;
+}
+
+.success-content {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  max-width: 300px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease;
+}
+
+.icon-success {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #4cd964;
+  color: white;
+  font-size: 30px;
+  line-height: 60px;
+  margin-bottom: 15px;
+}
+
+.icon-success::before {
+  content: '✓';
+}
+
+.success-content h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 18px;
+}
+
+.success-content p {
+  margin: 0 0 20px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.confirm-btn {
+  background: #4a6cf7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+  min-width: 80px;
+}
+
+.confirm-btn:hover {
+  background: #3a5ce5;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 576px) {
+  .feedback-modal {
+    width: 95%;
+    margin: 10px;
+  }
+
+  .modal-header {
+    padding: 16px 20px;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+
+  .modal-footer {
+    padding: 12px 20px;
+    flex-direction: column;
+  }
+
+  .cancel-btn,
+  .submit-btn {
+    width: 100%;
+  }
+}

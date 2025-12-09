@@ -1,0 +1,155 @@
+services:
+  front:
+    build:
+      context: ./web  # 构建上下文为当前目录[citation:1]
+      dockerfile: docker/Dockerfile  # 指定 Dockerfile 路径[citation:6]
+    image: vue-app:1.0  # 支持环境变量设置标签[citation:4]
+    container_name: sofeware-web
+    ports:
+      - "80:80"  # 主机端口:容器端口[citation:1]
+    networks:
+      - vue-network
+    restart: unless-stopped  # 自动重启策略[citation:7]
+    environment:
+      - NODE_ENV=production
+    volumes:
+      # 挂载日志文件（可选）
+      - vue-logs:/var/log/nginx
+    depends_on:
+      - backend  # 定义服务依赖关系[citation:6]
+
+  # 如果需要后端 API，可以在这里添加
+  backend:
+    build: 
+      context: ./server
+      dockerfile: docker/server/Dockerfile      
+    image: server:1.0
+    container_name: sofeware-server
+    environment:
+      - FLASK_ENV=production
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=lyxsb666
+      - MYSQL_DATABASE=app_db
+      - GS_PORT=5432
+      - GS_PASSWORD=YourStrongPassword123!
+      - GS_USERNAME=gaussdb
+      - GS_DATABASE=postgres
+      - GS_HOST=opengauss_db
+
+      - DataBase=opengauss
+
+      - DIFY_API_URL=https://api.dify.ai/v1/chat-messages
+      - DIFY_API_KEY=app-HaAWJe4i92IDpJVNLMzUcBM8
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    networks:
+      - vue-network
+    restart: unless-stopped  # 自动重启策略[citation:7]
+    volumes:
+      - uploads_volume:/app/uploads
+    depends_on:
+      - mysql
+      - opengauss_db
+
+  mysql:
+    image: mysql:8.0.17
+    container_name: sofeware-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: lyxsb666
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: root
+      TZ: Asia/Shanghai
+
+
+    networks:
+      - vue-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-ppassword"]
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+      interval: 10s
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  opengauss_db:
+    image: opengauss/opengauss:7.0.0-RC2.B015-openEuler22.03
+    container_name: sofeware-opengauss
+    restart: always
+    environment:
+      - GS_PASSWORD=YourStrongPassword123!
+      - GS_PORT=5432
+      - TZ=Asia/Shanghai
+
+
+    volumes:
+
+      - opengauss_data:/var/lib/opengauss
+    privileged: true
+    # 为容器分配足够的内存
+    shm_size: '512MB'
+    healthcheck: # 健康检查配置开始
+      test: [ "CMD-SHELL", "gsql -U myuser -d mydatabase -p 5432 -c 'SELECT 1;' > /dev/null 2>&1" ]
+      interval: 30s           # 每30秒检查一次
+      timeout: 10s            # 每次检查的超时时间为10秒
+      retries: 3              # 连续失败3次才标记为不健康
+      start_period: 60s       # 容器启动后，等待60秒才开始健康检查
+    networks:
+      - vue-network
+  redis:
+    image: redis:7-alpine
+    container_name: sofeware_redis
+    # ports:
+    #   - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - vue-network
+  celery-worker:
+    build:
+      context: ./server
+      dockerfile: docker/celery/Dockerfile     
+    container_name: pullup_celery_worker
+    environment:
+      - FLASK_ENV=production
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=lyxsb666
+      - MYSQL_DATABASE=app_db
+      - GS_PORT=5432
+      - GS_PASSWORD=YourStrongPassword123!
+      - GS_USERNAME=gaussdb
+      - GS_DATABASE=postgres
+      - GS_HOST=opengauss_db
+
+      - DataBase=opengauss
+
+      - DIFY_API_URL=https://api.dify.ai/v1/chat-messages
+      - DIFY_API_KEY=app-HaAWJe4i92IDpJVNLMzUcBM8
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+
+    volumes:
+      - uploads_volume:/app/uploads  # 与Web服务共享上传目录
+      - logs_volume:/app/logs
+    networks:
+      - vue-network
+networks:
+  # create a network between sandbox, api and ssrf_proxy, and can not access outside.
+
+  vue-network:
+    driver: bridge  # 使用桥接网络[citation:6]
+
+volumes:
+  vue-logs:
+  mysql_data:
+  opengauss_data:
+  uploads_volume:
+  redis_data:
+  logs_volume:
+
