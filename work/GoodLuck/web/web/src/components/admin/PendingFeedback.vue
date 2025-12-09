@@ -31,6 +31,7 @@
       </div>
     </div>
 
+
     <div class="feedback-list">
       <!-- 反馈列表（若无数据显示空状态） -->
       <div v-if="currentPageData.length > 0" class="feedback-items">
@@ -209,7 +210,7 @@ watch(
   }
 )
 
-// 格式化时间显示
+// 格式化时间显示，让数据更加工整
 const formatTime = (timeStr: string) => {
   const date = new Date(timeStr)
   const now = new Date()
@@ -231,7 +232,7 @@ const formatTime = (timeStr: string) => {
   }
 }
 
-// 处理反馈
+// 处理反馈成功，通知父组件更新计数
 const handleProcess = async (item: FeedbackItem) => {
   try {
     // 模拟API调用
