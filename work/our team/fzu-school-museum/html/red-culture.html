@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红色文化印记 - 福州大学校史馆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        .nav {
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+        }
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #003366;
+            font-weight: 600;
+        }
+        .nav a:hover {
+            color: #0066cc;
+        }
+        .red-culture-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        .red-title {
+            text-align: center;
+            color: #c8102e;
+            margin-bottom: 2.5rem;
+            font-size: 2rem;
+        }
+        .culture-card {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .culture-img {
+            width: 40%;
+            height: 350px;
+            object-fit: cover;
+        }
+        .culture-content {
+            width: 60%;
+            padding: 2rem;
+        }
+        .culture-content h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .culture-content p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .activity-list {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+        .activity-list li {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        .special-activity {
+            background-color: #fff3f3;
+            padding: 1.5rem;
+            border-left: 4px solid #c8102e;
+            margin-top: 2rem;
+        }
+        .special-activity h4 {
+            color: #c8102e;
+            margin-bottom: 0.8rem;
+        }
+        @media screen and (max-width: 768px) {
+            .culture-card {
+                flex-direction: column;
+            }
+            .culture-img {
+                width: 100%;
+                height: 250px;
+            }
+            .culture-content {
+                width: 100%;
+                padding: 1.5rem;
+            }
+        }
+        .footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>红色文化印记</h1>
+    </div>
+    <div class="nav">
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="timeline.html">校史时间轴</a></li>
+            <li><a href="#red-culture">红色文化印记</a></li>
+            <li><a href="featured-halls.html">特色场馆</a></li>
+        </ul>
+    </div>
+    <div class="red-culture-container">
+        <h2 class="red-title">福州大学红色文化传承</h2>
+        
+        <!-- 红色基因溯源 -->
+        <div class="culture-card">
+            <img src="rededucatejidi.jpeg" alt="福州大学红色文化教育基地" class="culture-img">
+            <div class="culture-content">
+                <h3>福大红色基因溯源</h3>
+                <p>福州大学的红色文化基因源于建校初期的爱国办学传统，自1958年创办以来，学校始终坚持党的领导，传承红色薪火。老一辈福大人秉持爱国奉献精神，在教学、科研中践行红色使命，为学校留下宝贵的红色精神财富。</p>
+                <p>学校以“三种精神”为红色文化核心：以张孤梅同志为代表的艰苦奋斗创业精神，激励师生在艰难办学条件下攻坚克难；以卢嘉锡先生为代表的严谨求实治学精神，引导科研工作者坚守学术初心；以魏可镁院士为代表的勇于拼搏奉献精神，成为师生服务国家与地方发展的精神指引。</p>
+                <div class="special-activity">
+                    <h4>红色教育载体</h4>
+                    <p>学校依托红色文化教育基地，在新生入学、重要纪念日等节点开展红色教育活动，将红色基因融入人才培养全过程，入选福建省学校“大思政课”实践教学基地。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 师生红色实践 -->
+        <div class="culture-card">
+            <img src="redacticity.jpeg" alt="福州大学师生红色研学活动" class="culture-img">
+            <div class="culture-content">
+                <h3>师生红色实践活动</h3>
+                <p>学校常态化组织师生开展红色研学、志愿服务等实践活动，走进革命老区、红色纪念馆，实地感悟红色文化，将校史中的红色故事与社会实践相结合，让红色文化在青年学子中代代相传。</p>
+                <h4>特色红色活动</h4>
+                <ul class="activity-list">
+                    <li>“时代好青年 古田再出发”红色资源育人改革创新活动：组织师生前往古田会议旧址，重温革命历史，传承红色精神。</li>
+                    <li>红色研学实践：赴革命老区开展调研、支教活动，将专业知识与红色教育结合，助力地方发展。</li>
+                    <li>校史红色主题活动：结合校庆、建党节等节点，举办校史红色故事分享会、红色文化论坛，弘扬福大红色传统。</li>
+                </ul>
+                <p>此外，学校将红色文化与美育、德育融合，开设红色主题通识课程，开展“非遗进校园”“高雅艺术进校园”等活动，以多元形式传承红色文化，近三年获国家级、省部级文化类奖项多项。</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>福州大学校史馆 © 2025 版权所有 | 地址：福州市闽侯县福州大学城乌龙江北大道2号</p>
+    </div>
+</body>
+</html>

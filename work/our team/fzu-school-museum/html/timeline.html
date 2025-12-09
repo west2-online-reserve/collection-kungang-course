@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校史时间轴 - 福州大学校史馆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        .nav {
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+        }
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #003366;
+            font-weight: 600;
+        }
+        .nav a:hover {
+            color: #0066cc;
+        }
+        .timeline-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        .timeline-title {
+            text-align: center;
+            color: #003366;
+            margin-bottom: 2.5rem;
+            font-size: 2rem;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #003366;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 2rem;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid #0066cc;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #e6f2ff;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #e6f2ff;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #e6f2ff;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #e6f2ff transparent transparent;
+        }
+        .right::after {
+            left: -13px;
+        }
+        .left::after {
+            right: -13px;
+        }
+        .timeline-content {
+            padding: 20px;
+            background-color: #e6f2ff;
+            position: relative;
+            border-radius: 6px;
+        }
+        .timeline-content h3 {
+            color: #003366;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+        .timeline-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 0.8rem;
+        }
+        .timeline-desc {
+            color: #333;
+            line-height: 1.6;
+        }
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid #e6f2ff;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #e6f2ff transparent transparent;
+            }
+            .left::after, .right::after {
+                left: 18px;
+            }
+            .right {
+                left: 0%;
+            }
+            .left::before, .right::before {
+                right: auto;
+                left: 30px;
+                border: medium solid #e6f2ff;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #e6f2ff transparent transparent;
+            }
+        }
+        .footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>校史时间轴</h1>
+    </div>
+    <div class="nav">
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="#timeline">校史时间轴</a></li>
+            <li><a href="red-culture.html">红色文化印记</a></li>
+            <li><a href="featured-halls.html">特色场馆</a></li>
+        </ul>
+    </div>
+    <div class="timeline-container">
+        <h2 class="timeline-title">福州大学校史沿革</h2>
+        <div class="timeline">
+            <!-- 1958年 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>1958年 - 正式建校</h3>
+                    <img src="establish.jpeg" alt="1958年福州大学建校" class="timeline-img">
+                    <p class="timeline-desc">福州大学根据中共福建省委、福建省人民委员会决定并报中央批准创办，是本省第一所社会主义理工大学，校址位于福州市西门外西禅寺风景区。学校任务为培养大批高级工程技术和科学研究人才，满足本省社会主义建设和文化科学发展需求，工科设机械工程、电机工程、土木建筑工程、采矿冶金工程、化学工程五个系，秋季开始招收新生，首批学生634人。</p>
+                </div>
+            </div>
+            <!-- 1960年代 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>1960年代 - 工科建设推进</h3>
+                    <img src="1960s-lab.jpg" alt="1960年代福州大学工科实验楼" class="timeline-img">
+                    <p class="timeline-desc">学校聚焦工科优势学科建设，工科实验楼建成投用，同时融入红色教育理念，组织师生参与社会实践与爱国教育活动，将红色文化基因融入人才培养过程。校舍建设按总体计划推进，工科场馆、公共教室楼及师生宿舍逐步建成，为教学科研提供硬件支撑。</p>
+                </div>
+            </div>
+            <!-- 1978年 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>1978年 - 恢复高考后首届新生入学</h3>
+                    <img src="1978-freshmen.jpg" alt="1978年福州大学恢复高考后首届新生入学" class="timeline-img">
+                    <p class="timeline-desc">改革开放后，学校迎来发展新机遇，恢复高考后的首届新生入学，学科建设与人才培养规模逐步扩大。除土木建筑工程系外，其他工科系学生此前在厦门大学预科学习，此后随学校发展逐步完善教学体系，红色文化教育在新时期焕发出新的活力。</p>
+                </div>
+            </div>
+            <!-- 2005年 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2005年 - 旗山校区启用</h3>
+                    <img src="qishanxiaomen.jpeg" alt="2005年福州大学旗山校区启用" class="timeline-img">
+                    <p class="timeline-desc">福州大学旗山校区正式启用，校区北起西洪路，南止上清村，东接工业区，西临兰江，面积初定两千亩。校区建设融入红色文化元素，校史纪念馆、红色文化长廊等设施同步规划，为校史与红色文化的展示和传承提供新载体，极大拓展学校办学空间。</p>
+                </div>
+            </div>
+            <!-- 2017年 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2017年 - 入选“双一流”建设高校</h3>
+                    <img src="2017-double-first.jpg" alt="2017年福州大学入选“双一流”建设高校" class="timeline-img">
+                    <p class="timeline-desc">福州大学入选国家“双一流”建设高校名单，学校以“明德至诚，博学远志”为校训，践行以张孤梅同志为代表的艰苦奋斗创业精神、卢嘉锡先生为代表的严谨求实治学精神、魏可镁院士为代表的勇于拼搏奉献精神，将校史积淀与红色文化传承相结合，助力新时代高质量发展。</p>
+                </div>
+            </div>
+            <!-- 2023年 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2023年 - 建校65周年校庆</h3>
+                    <img src="65years.png" alt="2023年福州大学建校65周年校庆活动" class="timeline-img">
+                    <p class="timeline-desc">福州大学迎来建校65周年校庆，举办“福州大学65周年校庆暨晋校区迎新晚会”（主办单位：福州大学先进制造，支持单位：福建七匹狼实业），主题为“追光逐梦前行路 六十五载正风华”。同期开展校史展览、红色文化论坛等系列活动，系统梳理校史脉络，弘扬红色文化精神，凝聚全校师生校友奋进力量。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>福州大学校史馆 © 2025 版权所有 | 地址：福州市闽侯县福州大学城乌龙江北大道2号</p>
+    </div>
+</body>
+</html>
