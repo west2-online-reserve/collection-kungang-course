@@ -133,6 +133,9 @@ services:
       - REDIS_PORT=6379
     depends_on:
       - redis
+      - opengauss_db
+      - mysql
+    restart: always
 
     volumes:
       - uploads_volume:/app/uploads  # 与Web服务共享上传目录
