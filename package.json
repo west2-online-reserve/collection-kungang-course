@@ -1,0 +1,19 @@
+{
+  "name": "fzu-ccds-backend",
+  "version": "1.0.0",
+  "description": "FZU CCDS website backend with Tencent Hunyuan AI integration",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.0",
+    "express": "^4.19.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
