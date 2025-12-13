@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.y.schoolhistorymuseum.mapper.JoinMapper">
+
+    <select id="getExhibition" resultType="Exhibition">
+        select `id`,`title`,`banner_url`,`content` from `school_history_museum`.`exhibition_detail` where id = #{id}
+    </select>
+
+    <select id="getExhibits" resultType="Exhibit">
+        select * from `school_history_museum`.`exhibits` where id = #{id}
+    </select>
+</mapper>

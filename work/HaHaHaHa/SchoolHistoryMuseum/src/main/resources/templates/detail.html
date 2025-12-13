@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>展区详情 - 加载中...</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .detail-container {
+            max-width: 1000px;
+        }
+        .detail-content p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .exhibit-item {
+            transition: transform 0.3s ease;
+        }
+        .exhibit-item:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 py-8 px-4 md:px-8">
+<!-- 详情页容器 -->
+<div class="detail-container mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+    <!-- 顶部banner图 -->
+    <div class="w-full h-64 md:h-96 overflow-hidden">
+        <img id="detailBanner" src="https://picsum.photos/id/28/1200/600" alt="展区banner" class="w-full h-full object-cover">
+    </div>
+
+    <!-- 详情内容区 -->
+    <div class="p-6 md:p-8">
+        <!-- 面包屑导航 -->
+        <div class="flex items-center text-gray-500 text-sm mb-6">
+            <a href="/Fzu/school_history_museum" class="hover:text-red-700">首页</a>
+            <i class="fa fa-angle-right mx-2 text-xs"></i>
+            <span id="breadcrumbCurrent" class="text-red-700">加载中...</span>
+        </div>
+
+        <!-- 标题和核心内容 -->
+        <h1 id="detailTitle" class="text-2xl md:text-3xl font-bold text-red-700 mb-6">加载中...</h1>
+        <div id="detailContent" class="detail-content text-gray-700">
+            <!-- 加载状态提示 -->
+            <div class="text-center py-10" id="loading">
+                <i class="fa fa-spinner fa-spin text-red-700 text-2xl mb-3 block"></i>
+                <p>加载中...</p>
+            </div>
+            <!-- 详情内容将通过JS动态渲染 -->
+        </div>
+
+        <!-- 展品列表 -->
+        <div class="mt-10">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">相关展品</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="exhibitList">
+                <!-- 相关展品将动态渲染 -->
+            </div>
+        </div>
+
+        <!-- 返回按钮 -->
+        <div class="mt-8">
+            <a href="/Fzu/school_history_museum" class="inline-flex items-center px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100">
+                <i class="fa fa-arrow-left mr-2"></i> 返回首页
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 1. 从URL参数中提取展区ID
+    function getExhibitionId() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('id'); // 获取?id=X中的X
+    }
+
+    const exhibitionId = getExhibitionId();
+    if (!exhibitionId) {
+        // 无ID时跳回首页
+        window.location.href = '/Fzu/school_history_museum';
+    }
+
+    // 2. 向后端请求详情数据
+    async function fetchDetailData(id) {
+        try {
+            const response = await fetch(`/Fzu/detail?id=${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) throw new Error('请求失败');
+            const result = await response.json();
+
+            if (result.success && result.data) {
+                renderDetail(result); // 渲染详情页
+            } else {
+                document.getElementById('detailContent').innerHTML = '<p class="text-red-500 text-center py-10">暂无相关展区信息</p>';
+            }
+        } catch (error) {
+            console.error('加载失败：', error);
+            document.getElementById('detailContent').innerHTML = '<p class="text-red-500 text-center py-10">加载失败，请重试</p>';
+        }
+    }
+
+    // 3. 渲染详情页内容
+    function renderDetail(result) {
+        const data = result.data; // 主数据
+        const exhibits = result.exhibits; // 相关展品（根节点属性）
+        // 隐藏加载状态
+        document.getElementById('loading').style.display = 'none';
+
+        // 渲染标题和页面标题
+        document.title = `展区详情 - ${data.title}`;
+        document.getElementById('detailTitle').textContent = data.title;
+        document.getElementById('breadcrumbCurrent').textContent = data.title;
+
+        // 渲染banner图
+        document.getElementById('detailBanner').src = data.bannerUrl || 'https://picsum.photos/id/28/1200/600';
+        document.getElementById('detailBanner').alt = data.title;
+
+        // 渲染核心内容（支持HTML格式）
+        document.getElementById('detailContent').innerHTML += `
+            <div class="prose max-w-none">${data.content}</div>
+        `;
+
+        // 渲染相关展品
+        const exhibitList = document.getElementById('exhibitList');
+        if (exhibits && exhibits.length > 0) {
+            exhibits.forEach(exhibit => {
+                const exhibitItem = document.createElement('div');
+                exhibitItem.className = 'exhibit-item bg-gray-50 rounded-lg overflow-hidden shadow-sm p-4';
+                exhibitItem.innerHTML = `
+                    <div class="overflow-hidden h-40 mb-3">
+                        <img src="${exhibit.imageUrl || 'https://picsum.photos/id/42/300/200'}" alt="${exhibit.name}" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-1">${exhibit.name}</h3>
+                    <p class="text-gray-600 text-sm">${exhibit.imageUrl}</p>
+                `;
+                exhibitList.appendChild(exhibitItem);
+            });
+        } else {
+            exhibitList.innerHTML = '<p class="col-span-full text-center text-gray-500 py-4">暂无相关展品</p>';
+        }
+    }
+
+    // 初始化：加载详情数据
+    fetchDetailData(exhibitionId);
+</script>
+</body>
+</html>
