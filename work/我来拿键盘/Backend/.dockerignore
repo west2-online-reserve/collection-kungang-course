@@ -1,0 +1,37 @@
+# 忽略构建产物
+backend
+backend.exe
+*.exe
+
+# 忽略静态资源（运行时生成）
+static/avatars/*
+static/checkins/*
+!static/.gitkeep
+
+# 忽略开发文件
+.git/
+.gitignore
+
+# 忽略配置文件
+.vscode/
+.idea/
+
+# 忽略日志
+*.log
+
+# 忽略环境文件
+.env
+.env.local
+
+# 忽略临时文件
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# 忽略测试文件
+*_test.go
+
+# 忽略文档
+*.md
+!README.md

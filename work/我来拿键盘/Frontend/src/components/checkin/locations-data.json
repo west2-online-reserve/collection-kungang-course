@@ -1,0 +1,97 @@
+[
+    {
+        "id": 1,
+        "name": "钟楼",
+        "coordinates": [
+            119.2715,
+            26.075
+        ],
+        "thumbnail": "/photos/checkin/fzu-clock-0.jpg",
+        "description": "福州大学标志性建筑，见证学校发展历程",
+        "images": [
+            "/photos/checkin/fzu-clock-1.jpg",
+            "/photos/checkin/fzu-clock-2.jpg",
+            "/photos/checkin/fzu-clock-3.jpg"
+        ],
+        "detailedDescription": "钟楼是福州大学最具代表性的建筑之一，建于学校创建初期。塔楼高耸入云，古朴典雅的设计融合了中西方建筑风格，成为校园的精神象征。每当整点钟声响起，悦耳的钟声回荡在整个校园，提醒着师生珍惜时光，奋发向上。"
+    },
+    {
+        "id": 2,
+        "name": "图书馆",
+        "coordinates": [
+            119.1977,
+            26.0590
+        ],
+        "thumbnail": "/photos/checkin/fzu-library-0.jpg",
+        "description": "现代化综合图书馆，藏书丰富",
+        "images": [
+            "/photos/checkin/fzu-library-1.jpg",
+            "/photos/checkin/fzu-library-2.jpg",
+            "/photos/checkin/fzu-library-3.jpg"
+        ],
+        "detailedDescription": "福州大学图书馆总建筑面积达数万平方米，馆藏纸质图书超过300万册，电子资源丰富。馆内设有自习区、研讨室、创客空间等多功能区域，为师生提供了良好的学习和研究环境。建筑采用现代化设计，宽敞明亮，是学生们最喜爱的学习场所之一。"
+    },
+    {
+        "id": 3,
+        "name": "荷花池",
+        "coordinates": [
+            119.1966,
+            26.0623
+        ],
+        "thumbnail": "/photos/checkin/fzu-pond-0.jpg",
+        "description": "校园内的美丽景观，四季风景宜人",
+        "images": [
+            "/photos/checkin/fzu-pond-1.jpg",
+            "/photos/checkin/fzu-pond-2.jpg",
+            "/photos/checkin/fzu-pond-3.jpg"
+        ],
+        "detailedDescription": "荷花池是校园内一处宁静优美的景观区。每到夏季，池中荷花盛开，清香四溢，吸引众多师生前来观赏。池边垂柳依依，小桥流水，是休闲放松的好去处。许多学生在此晨读、散步，感受大自然的美好。"
+    },
+    {
+        "id": 4,
+        "name": "体育馆",
+        "coordinates": [
+            119.1971,
+            26.0513
+        ],
+        "thumbnail": "/photos/checkin/fzu-gym-0.jpg",
+        "description": "设施齐全的综合体育场馆",
+        "images": [
+            "/photos/checkin/fzu-gym-1.jpg",
+            "/photos/checkin/fzu-gym-2.jpg",
+            "/photos/checkin/fzu-gym-3.jpg"
+        ],
+        "detailedDescription": "福州大学体育馆是一座现代化的综合性体育场馆，可容纳数千人。馆内设有篮球场、羽毛球场、乒乓球室、健身房等多种运动设施。这里不仅是学生体育课和运动训练的场所，也是学校举办各类体育赛事和大型活动的重要场地。"
+    },
+    {
+        "id": 5,
+        "name": "教学楼A座",
+        "coordinates": [
+            119.1963,
+            26.06
+        ],
+        "thumbnail": "/photos/checkin/fzu-thbuilding-0.jpg",
+        "description": "主要教学区域，承载无数求学梦想",
+        "images": [
+            "/photos/checkin/fzu-thbuilding-1.jpg",
+            "/photos/checkin/fzu-thbuilding-2.jpg"
+        ],
+        "detailedDescription": "教学楼A座是学校最早建成的教学楼之一，见证了一代又一代学子的成长。楼内教室宽敞明亮，配备现代化多媒体教学设备。走廊墙上挂满了学生作品和优秀师生的照片，营造出浓厚的学习氛围。"
+    },
+    {
+        "id": 6,
+        "name": "晋江楼",
+        "coordinates": [
+            119.20119,
+            26.06119
+        ],
+        "thumbnail": "/photos/checkin/fzu-jinjiang-0.jpg",
+        "description": "建筑功能多样，标志性建筑之一",
+        "images": [
+            "/photos/checkin/fzu-jinjiang-1.jpg",
+            "/photos/checkin/fzu-jinjiang-2.jpg",
+            "/photos/checkin/fzu-jinjiang-3.jpg"
+        ],
+        "detailedDescription": "晋江楼位于福州大学旗山校区，紧邻东入口，是学校的标志性建筑之一。大楼选取百米塔楼形态，在设计上遵循“自由与严谨并重、文化与空间关联、传统与现代对话、标识与和谐共融”的原则。"
+    }
+]

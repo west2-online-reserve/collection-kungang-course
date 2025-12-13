@@ -1,0 +1,28 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+backend
+backend.test
+
+# Output
+bin/
+dist/
+
+# Dependencies
+vendor/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
