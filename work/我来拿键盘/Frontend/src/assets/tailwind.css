@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #app { height: 100%; }
+
+@layer base {
+  /* 配置自定义字体 */
+  @font-face {
+    font-family: 'Noto';
+    src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+  }
+
+  @font-face {
+    font-family: 'ZCOOL-KuaiLe';
+    src: url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+  }
+
+  @font-face {
+    font-family: 'ZCOOL-QingKe';
+    src: url('https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap');
+  }
+}
+
+@layer utilities {
+  /* 自定义字体类 */
+  .font-noto {
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+
+  .font-kuaile {
+    font-family: 'ZCOOL KuaiLe', cursive;
+  }
+
+  .font-qingke {
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+  }
+}
+

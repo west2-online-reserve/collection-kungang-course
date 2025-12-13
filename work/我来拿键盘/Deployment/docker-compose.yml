@@ -1,0 +1,98 @@
+# Docker Compose配置文件 - Campus Check-in System
+
+services:
+  # 数据库服务（使用MySQL）
+  db:
+    image: mysql:8.0
+    container_name: database
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-123456}
+      - MYSQL_DATABASE=${DB_NAME:-fzu_history}
+    volumes:
+      - ../Data/schema.sql:/docker-entrypoint-initdb.d/init.sql
+      - db_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_PASSWORD:-123456}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - campus-network
+
+  # Redis缓存服务
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - campus-network
+
+  # 后端服务
+  backend:
+    build: 
+      context: ../Backend
+      dockerfile: Dockerfile
+    image: campus-backend:latest
+    container_name: backend
+    environment:
+      - GIN_MODE=release
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USER=${DB_USER:-root}
+      - DB_PASSWORD=${DB_PASSWORD:-123456}
+      - DB_NAME=${DB_NAME:-fzu_history}
+      - REDIS_ADDR=redis:6379
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
+      - JWT_SECRET=${JWT_SECRET:-your_jwt_secret_key_here}
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    volumes:
+      - backend_static:/app/static
+    networks:
+      - campus-network
+
+  # 前端服务
+  frontend:
+    build: 
+      context: ../Frontend
+      dockerfile: Dockerfile
+    image: campus-frontend:latest
+    container_name: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - campus-network
+
+volumes:
+  db_data:
+    driver: local
+  redis_data:
+    driver: local
+  backend_static:
+    driver: local
+
+networks:
+  campus-network:
+    driver: bridge

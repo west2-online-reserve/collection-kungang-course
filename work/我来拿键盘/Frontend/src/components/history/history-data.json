@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "year": "1958",
+    "title": "福州大学正式创建",
+    "description": "1958 年，福州大学在福州市鼓楼区创立，卢嘉锡担任首任校长。",
+    "image": "/photos/history/1.jpg"
+  },
+  {
+    "id": 2,
+    "year": "1960",
+    "title": "迎来首届本科生",
+    "description": "福州大学开始正式招收本科学生。",
+    "image": "/photos/history/2.jpg"
+  },
+  {
+    "id": 3,
+    "year": "1981",
+    "title": "成为首批硕士授予单位",
+    "description": "获批多个硕士点，研究生教育体系建立。",
+    "image": "/photos/history/3.png"
+  },
+  {
+    "id": 4,
+    "year": "1984",
+    "title": "获批首个博士点",
+    "description": "物理化学博士点获批。",
+    "image": "/photos/history/4.jpg"
+  },
+  {
+    "id": 5,
+    "year": "1996",
+    "title": "入选211工程",
+    "description": "福大进入国家重点建设高校行列。",
+    "image": "/photos/history/5.png"
+  },
+  {
+    "id": 6,
+    "year": "2005",
+    "title": "旗山校区正式启用",
+    "description": "福大主体迁入旗山校区。",
+    "image": "/photos/history/6.jpg"
+  },
+  {
+    "id": 7,
+    "year": "2017",
+    "title": "入选双一流建设高校",
+    "description": "化学学科入选世界一流学科。",
+    "image": "/photos/history/7.jpg"
+  },
+  {
+    "id": 8,
+    "year": "2020",
+    "title": "化学学科跻身 ESI 全球前 1‰",
+    "description": "科研国际影响力跃升。",
+    "image": "/photos/history/8.png"
+  },
+  {
+    "id": 9,
+    "year": "2023",
+    "title": "建校 65 周年",
+    "description": "校史馆升级开放，大型校庆活动举行。",
+    "image": "/photos/history/9.jpg"
+  },
+  {
+    "id": 10,
+    "year": "2024",
+    "title": "新一轮双一流建设",
+    "description": "学科发展持续推进。",
+    "image": "/photos/history/10.jpg"
+  }
+]
