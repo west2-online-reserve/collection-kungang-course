@@ -1,0 +1,575 @@
+/* 全局重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft Yahei", sans-serif;
+}
+
+/* 标题：福大深蓝+加粗，副标题：福大红，正文：深灰，提升可读性 */
+h1 { font-size: 2.8rem; font-weight: 700; color: #003A70; margin: 1.5rem 0; }
+h2 { font-size: 2.2rem; font-weight: 600; color: #003A70; position: relative; padding-bottom: 1rem; }
+h3 { font-size: 1.6rem; font-weight: 500; color: #C8102E; margin: 1rem 0; }
+p { font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1rem; }
+
+/* 板块标题添加红+蓝渐变装饰线，强化视觉焦点 */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #C8102E, #005EB8);
+    border-radius: 2px;
+}
+
+/* 红色渐变底纹+低透明度校史纹理，强化主题且不刺眼 */
+body {
+    background: linear-gradient(135deg, rgba(200,16,46,0.03), rgba(0,94,184,0.03)),
+                url("https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/95855ac2c05744fe8d860332441a7f23.png~tplv-a9rns2rl98-image.png") repeat fixed 0 0 / 300px 300px;
+    min-height: 100vh;
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif; /* 统一中文字体，更适配桌面端 */
+}
+
+/* 所有板块容器加毛玻璃+轻微阴影，提升层次感 */
+.container {
+    max-width: 1200px; /* 桌面端固定宽，居中更规整 */
+    margin: 0 auto 3rem;
+    padding: 2rem 3rem;
+    background: rgba(255,255,255,0.9);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,39,70,0.08);
+    backdrop-filter: blur(12px); /* 毛玻璃核心效果 */
+    border: 1px solid rgba(255,255,255,0.8);
+}
+
+/* 导航栏整体：固定顶部+毛玻璃，全程可见 */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(200,16,46,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    z-index: 999;
+    padding: 1rem 0;
+}
+
+/* 导航容器：固定宽度，居中对齐 */
+.navbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    background: transparent; /* 取消毛玻璃，继承父级样式 */
+    box-shadow: none;
+    border: none;
+}
+
+/* 校徽+标题：排版更精致 */
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar .logo img {
+    height: 56px;
+    transition: all 0.4s ease;
+}
+
+.navbar .logo img:hover {
+    transform: scale(1.08) rotate(3deg);
+    filter: drop-shadow(0 2px 8px rgba(200,16,46,0.2)); /* 轻微发光，强化交互 */
+}
+.navbar .logo span {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #003A70;
+    letter-spacing: 1px; /* 字间距加大，更大气 */
+}
+/* 导航链接：间距+hover动效强化 */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 3rem; /* 桌面端更大间距，更舒展 */
+    align-items: center;
+}
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+/* 导航链接hover/激活态：渐变下划线+文字变色 */
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #C8102E, #005EB8);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+.nav-links li a:hover,
+.nav-links li a.active {
+    color: #C8102E;
+}
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+    width: 100%;
+}
+
+.navbar nav {
+    margin-top: 1rem;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #005EB8;
+}
+
+.navbar a.active {
+    color: #005EB8; /* 福大蓝高亮 */
+    font-weight: 700;
+    border-bottom: 2px solid #005EB8;
+}
+
+/* 横幅 */
+.banner {
+    background: linear-gradient(rgba(200, 16, 46, 0.6), rgba(0, 94, 184, 0.6)), url("https://vcg03.cfp.cn/creative/vcg/800/new/VCG211567577542.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.banner-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    /* 关键修改：换高对比度颜色+强化阴影 */
+    color: #FFFFFF; /* 纯白色，和深色背景对比度拉满 */
+    font-weight: 900; /* 极粗，文字笔画完全不发虚 */
+    text-shadow: 0 0 8px rgba(255,255,255,0.8), /* 白色内发光，提亮文字本身 */
+                 0 2px 10px rgba(0,0,0,0.6); /* 黑色外阴影，隔离背景 */
+    letter-spacing: 3px; /* 加大字间距，避免拥挤模糊 */
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    /* 关键修改：换高对比度颜色+强化阴影 */
+    color: #F5F5F5; /* 浅灰白色，比纯白柔和但对比度足够 */
+    font-weight: 600; /* 加粗，提升清晰度 */
+    text-shadow: 0 0 5px rgba(255,255,255,0.7), /* 白色内发光 */
+                 0 1px 8px rgba(0,0,0,0.5); /* 黑色外阴影 */
+    line-height: 2; /* 加大行高，避免文字重叠 */
+}
+
+/* 通用板块标题 */
+.section-title {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 2rem;
+    color: #c8102e;
+    position: relative;
+}
+
+/* 通用板块间距 */
+section {
+    padding: 4rem 0; /* 统一上下内边距 */
+    margin: 2rem 0; /* 统一上下外边距 */
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: #c8102e;
+    margin: 0.5rem auto;
+}
+
+/* 红色文化板块 */
+.red-culture-section {
+    padding: 3rem 0;
+    background-color: #f9f9f9;
+}
+
+.red-culture-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: 0.3s;
+    position: relative; /* 新增 */
+    overflow: hidden; /* 新增 */
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+/* 新增：hover底部渐变条 */
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #C8102E, #005EB8);
+    transition: width 0.3s ease;
+}
+.card:hover::after {
+    width: 100%;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: #005EB8;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* 图片展厅 */
+.gallery-section {
+    padding: 3rem 0;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 固定3列，桌面端更规整 */
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+}
+
+/* 图片展厅悬浮说明 */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+.gallery-desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0,39,70,0.8);
+    color: white;
+    font-size: 0.9rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+.gallery-item:hover .gallery-desc {
+    transform: translateY(0);
+}
+
+/* 全局图片美化 */
+img {
+    border-radius: 8px; /* 统一圆角 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 轻微阴影 */
+    transition: all 0.3s ease; /* 过渡动画 */
+}
+img:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* hover加深阴影 */
+}
+
+.gallery-img {
+    width: 100%;
+    height: 280px; /* 固定高度，统一视觉 */
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.08);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0,39,70,0.85);
+    color: white;
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* 悬浮说明：渐变背景+从下滑入，更丝滑 */
+.gallery-desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,39,70,0.9), rgba(200,16,46,0.8));
+    color: white;
+    font-size: 1rem;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+}
+.gallery-item:hover .gallery-desc {
+    transform: translateY(0);
+}
+
+/* 页脚 */
+.footer {
+    background-color: #003A70;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+/* 滚动渐入动画 */
+.fade-in-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 红色校史问答 */
+.qa-container {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+.qa-item {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.qa-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+.qa-question {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: linear-gradient(90deg, #fdf2f8, #f5fafe);
+    border-left: 4px solid #C8102E;
+}
+.qa-question span {
+    color: #003A70;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.qa-question .icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #C8102E, #E83048);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.qa-item.active .qa-question .icon {
+    transform: rotate(45deg);
+    background: linear-gradient(135deg, #005EB8, #0078D4); /* 福大蓝渐变 */
+}
+
+.qa-answer {
+    padding: 0 2rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease, padding 0.6s ease;
+}
+.qa-answer p {
+    color: #444;
+    padding: 1.5rem 0;
+    line-height: 1.9;
+    border-top: 1px solid rgba(200,16,46,0.1); /* 细红线分隔，强化主题 */
+}
+/* 展开状态 */
+.qa-item.active .qa-answer {
+    max-height: 200px;
+    padding: 0 1.5rem 1.5rem;
+}
+.qa-item.active .qa-question .icon {
+    transform: rotate(45deg);
+    background: #005EB8;
+}
+
+/* 回到顶部按钮：更大尺寸+渐变+hover发光 */
+.back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #C8102E, #005EB8);
+    color: white;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 12px rgba(200,16,46,0.2);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 显示态：强化阴影+轻微上浮 */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+/* hover态：放大+发光+上浮，强化交互 */
+.back-to-top:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(200,16,46,0.3);
+    filter: brightness(1.1); /* 轻微提亮 */
+}
+
+/* 所有按钮/可交互元素：统一光标+防选中 */
+button, .qa-question, .nav-links a, .back-to-top {
+    cursor: pointer;
+    user-select: none; /* 禁止文字选中，提升交互体验 */
+}
+
+/* 图片全局优化：轻微锐化，提升清晰度 */
+img {
+    image-rendering: -webkit-optimize-contrast;
+    filter: contrast(1.02) brightness(1.01); /* 轻微调优，更通透 */
+}
+
+/* 滚动条美化（桌面端专属） */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(200,16,46,0.05);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #C8102E, #005EB8);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #E83048, #0078D4);
+}
+
+/* 加载动画：全屏毛玻璃+校徽放大动效 */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    gap: 2rem; /* 校徽与文字间距 */
+}
+.loader img {
+    height: 120px; /* 更大校徽，更醒目 */
+    animation: spin 2s infinite linear alternate; /* 缓动旋转，更丝滑 */
+    filter: drop-shadow(0 4px 12px rgba(200,16,46,0.2));
+}
+.loader p {
+    font-size: 1.4rem;
+    color: #003A70;
+    font-weight: 500;
+    letter-spacing: 2px;
+    /* 文字渐变 */
+    background: linear-gradient(90deg, #C8102E, #005EB8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* 文字呼吸动效 */
+    animation: breathe 2s infinite ease-in-out;
+}
+/* 旋转动效：缓入缓出，更自然 */
+@keyframes spin {
+    0% { transform: rotate(0deg) scale(1); }
+    100% { transform: rotate(360deg) scale(1.05); }
+}
+/* 文字呼吸动效 */
+@keyframes breathe {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+/* 隐藏态：渐隐+上移，更丝滑 */
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .banner-content h2 {
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--可以点击小图标查看地点详情-->
+<head>
+    <meta charset="UTF-8">
+    <title>福州大学校园打卡点</title>
+    <style>
+        /* ---------- 通用样式 ---------- */
+        *{box-sizing:border-box;}
+        body{
+            font-family:"微软雅黑",sans-serif;
+            margin:0;
+            background:#f4fff4;
+        }
+        header{
+            background:#006442;
+            color:white;
+            text-align:center;
+            padding:18px;
+            font-size:30px;
+            font-weight:bold;
+            letter-spacing:2px;
+        }
+
+        /* ---------- 地图容器：固定 1280×1811 ---------- */
+        .map-container{
+            position:relative;          /* 给 .point 做绝对定位参照 */
+            width:1280px;               /* 新宽度 */
+            height:1811px;              /* 新高度 */
+            margin:0 auto;              /* 水平居中 */
+            background:url('img/map.jpg') no-repeat left top;
+            background-size:1280px 1811px; /* 恰好填满容器，不缩放 */
+            border-radius:12px;
+            border:3px solid #006442;
+            overflow:hidden;
+        }
+
+        /* ---------- 打卡点按钮 ---------- */
+        .point{
+            position:absolute;
+            background:#ff5c5c;
+            color:#fff;
+            width:26px;height:26px;
+            border-radius:50%;
+            text-align:center;
+            line-height:26px;
+            font-size:14px;font-weight:bold;
+            cursor:pointer;
+            box-shadow:0 0 6px rgba(0,0,0,.4);
+            transition:.2s;
+        }
+        .point:hover{transform:scale(1.2);}
+
+        /* ---------- 信息弹窗 ---------- */
+        #infoBox{
+            position:fixed;
+            top:50%;left:50%;
+            transform:translate(-50%,-50%);
+            width:330px;
+            background:#ffffff;
+            border-radius:10px;
+            border:3px solid #006442;
+            padding:15px;
+            z-index:99;
+            display:none;
+            box-shadow:0 0 10px rgba(0,0,0,.4);
+            animation:fadeIn .2s ease;
+        }
+        #infoBox img{width:100%;border-radius:8px;margin-top:6px;}
+        #infoBox h2{text-align:center;color:#006442;margin-bottom:5px;}
+        #infoBox p{font-size:14px;text-align:justify;margin-top:4px;}
+
+        /* ---------- 关闭按钮 ---------- */
+        #closeBtn{
+            background:#ff4f4f;
+            color:white;
+            border:none;
+            padding:4px 10px;
+            border-radius:6px;
+            cursor:pointer;
+            margin-top:10px;
+            float:right;
+        }
+
+        /* ---------- 动画 ---------- */
+        @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    </style>
+</head>
+<body>
+
+<header>📍 福州大学校园打卡点 · 旗山校区</header>
+
+<!-- 地图容器（背景图已写在 CSS 里） -->
+<div class="map-container">
+    <div class="point" style="top:43%;left:60%;" onclick="show(0)">📚</div>
+    <div class="point" style="top:80%;left:72%;" onclick="show(1)">🌳</div>
+    <div class="point" style="top:61%;left:44%;" onclick="show(2)">💧</div>
+    <div class="point" style="top:68%;left:65%;" onclick="show(3)">🦢</div>
+</div>
+
+<!-- 弹出框 -->
+<div id="infoBox"></div>
+
+<script>
+    /* 可扩展数据（请用自己的图片替换 img） */
+    const spots=[
+        {
+            name:"福州大学图书馆",
+            img:"img/lib.jpg",
+            text:"福州大学标志性建筑之一，藏书丰富，设有自习区、研讨室与24小时学习空间，是福大学子的精神家园。"
+        },
+        {
+            name:"福州大学国家科技园",
+            img:"img/tech.jpg",
+            text:"福州大学高精尖科技建筑群，各大实验室的聚集地。"
+        },
+        {
+            name:"致知湖",
+            img:"img/lake.jpg",
+            text:"知行湖风景优美，湖光山色，常有白鹭驻足，静如画卷。环湖步道是晨跑、散步的绝佳地点。"
+        },
+        {
+            name:"翠微湖",
+            img:"img/goo.jpg",
+            text:"芙蓉湖位于校园中心，是福大最知名的湖之一，湖畔常有成群黑天鹅，成为福大“校宠”。"
+        }
+    ];
+
+    function show(i){
+        const box=document.getElementById('infoBox');
+        box.style.display='block';
+        box.innerHTML=`
+            <h2>${spots[i].name}</h2>
+            <img src="${spots[i].img}" alt="">
+            <p>${spots[i].text}</p>
+            <button id="closeBtn" onclick="closeInfo()">关闭</button>`;
+    }
+    function closeInfo(){
+        document.getElementById('infoBox').style.display='none';
+    }
+</script>
+
+</body>
+</html>
