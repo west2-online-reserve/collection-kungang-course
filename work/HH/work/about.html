@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>关于我们</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <img src="images/fzu_logo.png" class="logo">
+    <h1>关于我们</h1>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="history.html">校史时间轴</a>
+      <a href="red.html">红色文化</a>
+      <a href="about.html">关于我们</a>
+    </nav>
+    <button id="darkToggle">🌙</button>
+  </header>
+
+  <section class="fade-in">
+    <h2>开发团队</h2>
+    <ul>
+      <li>胡昊（组长）—— 总体统筹与内容策划</li>
+      <li>黄炫文—— 页面排版与样式设计</li>
+      <li>郭昱祺—— 动画与交互实现</li>
+      <li>曾俊涛—— 文案撰写与测试</li>
+    </ul>
+  </section>
+
+  <section class="fade-in">
+    <h2>留言墙</h2>
+    <input type="text" id="msgInput" placeholder="留下你想说的话...">
+    <button id="msgSend" class="btn ripple">发表</button>
+    <div id="msgList"></div>
+  </section>
+
+  <footer>© 福州大学校史馆设计组</footer>
+  <script src="js/script.js"></script>
+</body>
+</html>

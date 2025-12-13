@@ -1,0 +1,379 @@
+/* ------------------------------
+   ? 福州大学校史馆 - 豪华美化版样式表
+   作者：福大网页设计小组
+   主色调：福大红 (#A50034)、金 (#FFD700)、白
+-------------------------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Microsoft YaHei", sans-serif;
+  background: #fff;
+  color: #333;
+  transition: background 0.4s, color 0.4s;
+  scroll-behavior: smooth;
+}
+
+/* 头部导航栏 */
+header {
+  background: #A50034;
+  color: #fff;
+  text-align: center;
+  padding: 15px 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+header.scrolled {
+  background: #7A0028;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+header h1 {
+  margin: 10px 0;
+  font-size: 26px;
+  letter-spacing: 2px;
+}
+
+.logo {
+  height: 50px;
+  position: absolute;
+  left: 20px;
+  top: 10px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  position: relative;
+  transition: color 0.3s;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #FFD700;
+  transition: width 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* 夜间模式按钮 */
+#darkToggle {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  background: #fff;
+  color: #A50034;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#darkToggle:hover {
+  background: #FFD700;
+  color: #A50034;
+}
+
+/* 通用区块 */
+section {
+  padding: 40px 10%;
+  text-align: center;
+  background: #fff;
+  transition: background 0.3s;
+}
+
+section:nth-child(even) {
+  background: #f9f9f9;
+}
+
+section h2 {
+  color: #A50034;
+  font-size: 28px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+section h2::after {
+  content: "";
+  width: 80px;
+  height: 3px;
+  background: #FFD700;
+  display: block;
+  margin: 10px auto 0;
+}
+
+/* 英雄区 */
+.hero {
+  background: linear-gradient(135deg, #A50034, #FFD6D6);
+  color: #fff;
+  padding: 100px 10%;
+  text-align: center;
+  border-bottom: 5px solid #FFD700;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: inline-block;
+  background: #FFD700;
+  color: #A50034;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.btn:hover {
+  background: #A50034;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255,215,0,0.6);
+}
+
+/* 波纹效果 */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+.ripple::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(255,255,255,0.4);
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+  transition: transform 0.5s, opacity 1s;
+}
+.ripple:active::after {
+  transform: scale(4);
+  opacity: 1;
+  transition: 0s;
+}
+
+/* 图片展示 */
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.gallery img {
+  width: 30%;
+  border-radius: 8px;
+  transition: transform 0.4s, box-shadow 0.4s;
+  cursor: pointer;
+}
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* 时间轴 */
+.timeline {
+  position: relative;
+  margin: 40px auto;
+  max-width: 1000px;
+}
+.container {
+  padding: 15px 30px;
+  position: relative;
+  width: 50%;
+}
+.container.left { left: 0; }
+.container.right { left: 50%; }
+.content {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  animation: fadeInUp 0.8s ease;
+}
+.container::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  width: 15px;
+  height: 15px;
+  background: #A50034;
+  border-radius: 50%;
+  z-index: 1;
+}
+.container.left::before { right: -8px; }
+.container.right::before { left: -8px; }
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  background: #A50034;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 3px;
+}
+
+/* 轮播图 */
+.slider {
+  position: relative;
+  width: 80%;
+  margin: 30px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 0;
+  box-shadow: 0 8px 20px rgba(165, 0, 52, 0.2);
+}
+.slides {
+  display: flex;
+  width: 100%;
+  transition: transform 0.6s ease;
+}
+.slides img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+
+}
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(165, 0, 52, 0.6);
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+.prev:hover, .next:hover {
+  background: rgba(165, 0, 52, 0.9);
+}
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* 留言板 */
+#message-board, #msgList {
+  text-align: center;
+}
+#msgInput {
+  width: 70%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#msgList {
+  margin-top: 15px;
+  text-align: left;
+}
+#msgList p {
+  background: #f7f7f7;
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin: 5px auto;
+  max-width: 80%;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* 返回顶部 */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #A50034;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  transition: all 0.3s;
+}
+#backToTop.show {
+  display: block;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 夜间模式 */
+body.dark {
+  background: #1e1e1e;
+  color: #ddd;
+}
+body.dark header { background: #2c2c2c; }
+body.dark section { background: #333; }
+body.dark nav a { color: #FFD6D6; }
+body.dark #msgInput { background: #444; color: #fff; border-color: #666; }
+body.dark #msgList p { background: #444; color: #eee; }
+
+/* 页脚 */
+footer {
+  background: #A50034;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  margin-top: 40px;
+}
+
+#darkToggle {
+  transition: all 0.3s ease, transform 0.4s ease;
+}
+#darkToggle:hover {
+  transform: rotate(20deg) scale(1.1);
+}
+
+/* 限制时间轴图片大小并保持比例 */
+.timeline .content img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+.timeline .content img:hover {
+  transform: scale(1.05);
+}
+
