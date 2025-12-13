@@ -1,0 +1,63 @@
+import requests
+from bs4 import BeautifulSoup
+import sqlite3
+from datetime import datetime
+import time
+
+# 目标城市配置（北京、杭州、武汉、重庆）
+CITY_INFO = [
+    {"name": "北京", "code": "101010100"},
+    {"name": "杭州", "code": "101210101"},
+    {"name": "武汉", "code": "101200101"},
+    {"name": "重庆", "code": "101040100"}
+]
+
+# 请求头
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2",
+    "Referer": "http://www.weather.com.cn/"
+}
+
+# 初始化数据库
+def init_db():
+    conn = sqlite3.connect("weather_db.db")
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS weather_data (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            area TEXT NOT NULL,
+            date TEXT NOT NULL,
+            weather_info TEXT NOT NULL,
+            temperature TEXT NOT NULL,
+            crawl_time DATETIME NOT NULL,
+            UNIQUE(area, date)
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
+# 爬取单个城市的天气数据并存储到数据库
+def crawl_and_save(city_name, city_code):
+    url = f"http://www.weather.com.cn/weather/{city_code}.shtml"
+    try:
+        time.sleep(3)
+        response = requests.get(url, headers=HEADERS, timeout=15)
+        response.encoding = "utf-8"
+        
+        soup = BeautifulSoup(response.text, "html.parser")
+        forecast_ul = soup.find("ul", class_="t clearfix")
+        
+        if not forecast_ul:
+            print(f"[{city_name}] 未找到天气数据（页面结构可能变化）")
+            return
+        
+        crawl_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        conn = sqlite3.connect("weather_db.db")
+        cursor = conn.cursor()
+        
+        for index, li in enumerate(forecast_ul.find_all("li")[:7], 1):
+            date = li.find("h1").text.strip()
+            weather = li.find("p", class_="wea").text.strip()
+            temp = li.find
