@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>福州大学计算机与大数据学院 - 学院简介</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/college.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-logo">
+            <a href="homepage.html" class="logo-link">
+                <i class="fas fa-university" style="color: var(--fd-red);"></i>
+                <span style="color: var(--fd-blue); font-weight: 700; font-size: 1.2rem;">福州大学</span>
+            </a>
+        </div>
+        <div class="navbar-links">
+            <a href="homepage.html" class="nav-link">首页</a>
+            <a href="history.html" class="nav-link">红色校史</a>
+            <a href="checkin.html" class="nav-link">打卡点</a>
+            <a href="college.html" class="nav-link">数字展馆</a>
+        </div>
+    </div>
+</nav>
+
+  <!-- 学院导航栏 -->
+  <nav class="college-nav">
+    <div class="container">
+      <ul class="college-nav-list">
+        <li class="nav-item"><a href="#" class="college-nav-link active">首页</a></li>
+        <li class="nav-item"><a href="#teachers" class="college-nav-link">教师风采</a></li>
+        <li class="nav-item"><a href="#lab-preview" class="college-nav-link">实验室</a></li>
+        <li class="nav-item"><a href="homepage.html" class="college-nav-link">返回总首页</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="particles" id="particlesContainer"></div>
+  <!-- 浮动装饰元素 -->
+<div class="floating-element red"></div>
+<div class="floating-element blue"></div>
+<div class="floating-element yellow"></div>
+
+  <div class="container">
+    <h1 class="page-title">福州大学计算机与大数据学院 简介</h1>
+
+    <!-- 学院简介 -->
+    <div class="college-intro">
+      <p>福州大学计算机与大数据学院秉承“明德至诚，博学远志”的校训精神，历史积淀深厚，其发展源头可追溯至1977年的计算机技术专业，1984年成立计算机科学与技术系，2003年组建计算机学院，2018年整合为现院。学院为国家培育出众多优秀人才，已成为信息技术领域的重要阵地。学科实力强劲，拥有计算机科学与技术一级学科博士点，计算机科学为ESI全球前4.42‰学科，计算机科学与技术专业是国家一流本科专业建设点。师资队伍含国家“百千万人才工程”人选等高层次人才，形成完善的本-硕-博培养体系。科研成果丰硕，近五年主持国家自然科学基金50余项，获省部级科技奖12项，超算团队构建医疗领域大模型并屡获ASC竞赛一等奖，彰显“科技报国”担当。</p>
+    </div>
+
+    <!-- 学院数据统计 -->
+    <div class="college-stat">
+      <div class="stat-item">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">专任教师</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3000+</div>
+        <div class="stat-label">在读学生</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">300+</div>
+        <div class="stat-label">省部级以上科研项目</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label">国家级一流本科专业</div>
+      </div>
+    </div>
+
+    <!-- 图片预览模态框 -->
+    <div id="imageModal" class="modal">
+      <span class="close-btn">&times;</span>
+      <img class="modal-img" id="fullsizeImg" src="" alt="大图预览">
+    </div>
+
+    <!-- 学院3张图片展示 -->
+    <div class="college-img-group">
+      <div class="college-img-item">
+        <img src="../assets/images/college/lab-equipment.jpg" alt="福州大学计算机与大数据学院教学楼" class="college-img">
+        <p class="img-desc">重点实验室</p>
+      </div>
+      <div class="college-img-item">
+        <img src="../assets/images/college/college-building.jpg" alt="福州大学计算机与大数据学院实验室" class="college-img">
+        <p class="img-desc">学院教学楼</p>
+      </div>
+      <div class="college-img-item">
+        <img src="../assets/images/college/teacher-lab.jpg" alt="福州大学计算机与大数据学院科研团队" class="college-img">
+        <p class="img-desc">科研团队风采</p>
+      </div>
+    </div>
+
+    <!-- 教师风采板块 -->
+    <section id="teachers" class="teacher-section">
+      <h2 class="section-title">教师风采</h2>
+      <div class="teacher-list">
+        <div class="teacher-item">
+          <div class="teacher-avatar">👨‍🏫</div>
+          <h3 class="teacher-name">鲍苏苏 教授</h3>
+          <p class="teacher-desc">博士生导师，享受国务院政府特殊津贴专家，福建省优秀专家，主要研究方向为智能信息处理、模式识别与智能系统</p>
+        </div>
+        <div class="teacher-item">
+          <div class="teacher-avatar">👨‍🏫</div>
+          <h3 class="teacher-name">陈锻生 教授</h3>
+          <p class="teacher-desc">博士生导师，福建省科技创新领军人才，主要研究方向为计算机视觉与模式识别、智能信息处理</p>
+        </div>
+        <div class="teacher-item">
+          <div class="teacher-avatar">👩‍🏫</div>
+          <h3 class="teacher-name">江敏 教授</h3>
+          <p class="teacher-desc">博士生导师，福建省高层次人才，主要研究方向为数据挖掘、机器学习、人工智能应用</p>
+        </div>
+        <div class="teacher-item">
+          <div class="teacher-avatar">👨‍🏫</div>
+          <h3 class="teacher-name">陈羽中 教授</h3>
+          <p class="teacher-desc">博士生导师，福州大学计算机与大数据学院副院长，主要研究方向为网络与信息安全、云计算与大数据安全</p>
+        </div>
+        <div class="teacher-item">
+          <div class="teacher-avatar">👨‍🏫</div>
+          <h3 class="teacher-name">王美华 教授</h3>
+          <p class="teacher-desc">博士生导师，主要研究方向为智能计算、 swarm intelligence、优化算法及其应用</p>
+        </div>
+        <div class="teacher-item">
+          <div class="teacher-avatar">👨‍🏫</div>
+          <h3 class="teacher-name">张栋 副教授</h3>
+          <p class="teacher-desc">硕士生导师，主要研究方向为计算机网络、边缘计算、物联网技术与应用</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 实验室预览板块 -->
+    <section id="lab-preview" class="lab-section">
+      <h2 class="section-title">重点实验室预览</h2>
+      <div class="lab-list">
+        <div class="lab-item">
+          <h3 class="lab-title">IDEA实验室</h3>
+          <p class="lab-desc">智能数据与知识融合实验室，主要研究方向包括智慧医疗、数据挖掘、人工智能、大语言模型、多模态融合等。</p>
+          <p class="lab-desc"><i class="fas fa-map-marker-alt"></i> 学院4号楼125 | <i class="fas fa-user"></i> 檀彦超 老师</p>
+        </div>
+        <div class="lab-item">
+          <h3 class="lab-title">小样本智能实验室</h3>
+          <p class="lab-desc">主要研究方向是计算机视觉、小样本学习、计算神经科学、肠镜图像处理，注重理论与实践结合。</p>
+          <p class="lab-desc"><i class="fas fa-map-marker-alt"></i> 学院楼2号楼409 | <i class="fas fa-user"></i> 卓林海 老师</p>
+        </div>
+        <div class="lab-item">
+          <h3 class="lab-title">AINET实验室</h3>
+          <p class="lab-desc">主要研究机器学习在计算机网络中的应用，核心方向包括强化学习在网络优化、流量分类与异常检测等。</p>
+          <p class="lab-desc"><i class="fas fa-map-marker-alt"></i> 3号楼·107 | <i class="fas fa-user"></i> 郭迎亚 老师</p>
+        </div>
+      </div>
+      
+      <!-- 跳转按钮 -->
+      <div style="text-align: center; margin-top: 30px;">
+        <a href="lab.html" class="back-btn">
+          查看全部实验室 <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- 返回首页 -->
+    <a href="homepage.html" class="back-btn">返回总首页</a>
+  </div>
+
+  <!-- 教师详情弹窗 -->
+  <div id="teacherModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div id="teacherDetail"></div>
+    </div>
+  </div>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/college.js"></script>
+</body>
+</html>

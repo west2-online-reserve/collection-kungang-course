@@ -1,0 +1,270 @@
+/* 全局样式重置 + 福大校色/字体规范 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Microsoft Yahei", "思源黑体", sans-serif;
+}
+
+/* 福大主题色变量（校徽蓝+校史红/红色文化） */
+:root {
+  --fd-blue: #0055A4;    /* 福大校徽蓝 */
+  --fd-red: #C8102E;     /* 福大红色/红色文化主色 */
+  --fd-gray: #F5F5F5;    /* 背景灰 */
+  --fd-dark: #333333;    /* 正文深灰 */
+  --fd-light-red: #FDE8EA; /* 红色浅背景 */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08); /* 导航栏初始阴影 */
+  --spacing-md: 20px;    /* 导航链接间距 */
+  --radius-sm: 6px;      /* 导航链接圆角 */
+
+  /* 背景扩展变量（复用打卡页效果） */
+  --fd-red-dark: #A80E25; /* 红色加深 */
+  --fd-blue-dark: #004488; /* 蓝色加深 */
+  --fd-yellow: #FFC107;   /* 黄色点缀 */
+  --fd-purple: #6f42c1;   /* 紫色点缀 */
+  --fd-orange: #fd7e14;   /* 橙色点缀 */
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* 通用阴影 */
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12); /* 悬浮阴影 */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 通用过渡 */
+  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* 慢过渡 */
+}
+
+.navbar {
+  background-color: #fff;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  padding: 0;
+  transition: all 0.3s ease; /* 加过渡，滚动时样式变化更丝滑 */
+}
+
+.navbar .container {
+      display: flex;
+      justify-content: space-between; /* 左侧logo，右侧导航链接 */
+      align-items: center; /* 垂直居中 */
+      height: 70px; /* 导航栏高度 */
+      width: 100%;
+      max-width: 1200px; /* 最大宽度，适配大屏 */
+      margin: 0 auto; /* 水平居中 */
+      padding: 0 20px; /* 左右留白 */
+    }
+
+.navbar-logo .logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 8px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--fd-dark);
+  text-decoration: none;
+  font-size: 15px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: all 0.3s ease;
+}
+
+.nav-link.active {
+  color: var(--fd-red);
+  font-weight: 600;
+  background-color: var(--fd-light-red);
+}
+
+.nav-link:hover:not(.active) {
+  color: var(--fd-red);
+}
+
+/* 页面基础样式
+body {
+  color: var(--fd-dark);
+  background-color: #fff;
+  line-height: 1.6;
+} */
+
+body {
+  color: var(--fd-dark);
+  background: linear-gradient(135deg, #fafafa 0%, #f0f2f5 50%, #e9ecef 100%);
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* body装饰性纹理（径向渐变光斑） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+          radial-gradient(circle at 10% 20%, rgba(200, 16, 46, 0.03) 0%, transparent 20%),
+          radial-gradient(circle at 90% 30%, rgba(0, 85, 164, 0.03) 0%, transparent 20%),
+          radial-gradient(circle at 50% 80%, rgba(108, 117, 125, 0.02) 0%, transparent 20%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* 容器通用样式 */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 标题通用样式（适配红色校史主题） */
+.page-title {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--fd-red);
+  font-size: 2.2rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--fd-light-red);
+  margin-bottom: 40px;
+}
+
+.floating-element {
+  position: fixed;
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: -1;
+  animation: float-element 20s infinite linear;
+  pointer-events: none;
+}
+.floating-element.red {
+  background: var(--fd-red);
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  left: -150px;
+  animation-delay: 0s;
+}
+.floating-element.blue {
+  background: var(--fd-blue);
+  width: 200px;
+  height: 200px;
+  bottom: -100px;
+  right: -100px;
+  animation-delay: 5s;
+}
+.floating-element.yellow {
+  background: var(--fd-yellow);
+  width: 150px;
+  height: 150px;
+  top: 50%;
+  right: -75px;
+  animation-delay: 10s;
+}
+
+/* 粒子效果容器 */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  animation: particle-float 20s infinite linear;
+}
+
+
+.header {
+  background: linear-gradient(120deg, var(--fd-blue), var(--fd-red));
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* 通用按钮样式 */
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-red {
+  background-color: var(--fd-red);
+  color: #fff;
+}
+.btn-red:hover {
+  background-color: #A80E25;
+  transform: translateY(-2px);
+}
+
+/* ========== 动画关键帧（背景/交互） ========== */
+/* 浮动元素动画 */
+@keyframes float-element {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-100px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(100px) rotate(240deg);
+  }
+}
+
+/* 粒子浮动动画 */
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 水波纹交互动画 */
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
+}
+
+
+/* 响应式基础：适配移动端 */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 1.8rem;
+    padding: 20px 0;
+    margin-bottom: 20px;
+  }
+  .container {
+    padding: 0 15px;
+  }
+}
