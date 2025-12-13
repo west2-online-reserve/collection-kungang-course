@@ -1,0 +1,1114 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-red: #C8102E;
+    --dark-red: #A00D24;
+    --light-red: #E63946;
+    --gold: #FFD700;
+    --dark-gray: #2C3E50;
+    --light-gray: #ECF0F1;
+    --white: #FFFFFF;
+    --text-dark: #333333;
+    --text-light: #666666;
+}
+
+body {
+    font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 导航栏 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(200, 16, 46, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 20px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-brand h1 {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--gold);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--white);
+    transition: all 0.3s ease;
+}
+
+/* 主视觉区域 */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--white);
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path d="M0,300 Q300,200 600,300 T1200,300" stroke="rgba(255,255,255,0.1)" fill="none" stroke-width="2"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--gold);
+}
+
+.hero-description {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--gold);
+    color: var(--dark-red);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: #FFC107;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+    display: block;
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--white);
+    border-radius: 25px;
+    position: relative;
+}
+
+.scroll-indicator span::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--white);
+    border-radius: 50%;
+    animation: scroll 2s infinite;
+}
+
+/* 通用区块样式 */
+section {
+    padding: 80px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary-red);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--gold);
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-top: 1.5rem;
+}
+
+/* --- 校史概览卡片优化开始 (High-End Version) --- */
+.intro-section {
+    /* 使用微渐变背景替代单色 */
+    background: linear-gradient(180deg, #F9FAFB 0%, #ECF0F1 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 添加背景装饰纹理 */
+.intro-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(200, 16, 46, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    padding: 10px; /* 预留阴影空间 */
+    position: relative;
+    z-index: 1;
+}
+
+/* 卡片容器：纯白背景 + 极其细腻的阴影 */
+.intro-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden; /* 保证装饰线不溢出 */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 10px 15px rgba(0, 0, 0, 0.03); /* 初始状态很淡的阴影 */
+    border: 1px solid rgba(0, 0, 0, 0.03); /* 微弱边框增加质感 */
+    cursor: default;
+}
+
+/* 鼠标悬停交互：上浮 + 投影加深 */
+.intro-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(200, 16, 46, 0.08); /* 红色系的淡阴影 */
+}
+
+/* 顶部的装饰线条（鼠标悬停时出现） */
+.card-hover-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-red), var(--gold));
+    transform: scaleX(0); /* 默认隐藏 */
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.intro-card:hover .card-hover-line {
+    transform: scaleX(1); /* 悬停时展开 */
+}
+
+/* 内部布局 */
+.card-inner {
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* 图标容器：增加底色圆环，更显精致 */
+.intro-icon-box {
+    width: 70px;
+    height: 70px;
+    background: #FFF5F6; /* 极淡的红色背景 */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.intro-card:hover .intro-icon-box {
+    transform: scale(1.1) rotate(5deg);
+    background: #FFEAEA;
+}
+
+.intro-icon-box .icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+/* 数据核心区域 */
+.stat-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 核心数字：大、粗、渐变色 */
+.stat-number {
+    font-size: 3rem; /* 放大数字 */
+    font-weight: 800; /* 加粗 */
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    font-family: Arial, sans-serif; /* 数字用无衬线体更好看 */
+    
+    /* 核心：文字渐变效果 */
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: var(--primary-red); /* 兼容性回退 */
+}
+
+/* 数字单位（如“年”、“万+”）缩小显示 */
+.stat-number small {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 5px;
+    color: var(--text-light); /* 单位不需要渐变，用灰色 */
+    -webkit-text-fill-color: var(--text-light);
+    vertical-align: middle;
+}
+
+/* 底部标签文字 */
+.stat-label {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+/* --- 校史概览卡片优化结束 --- */
+
+
+/* --- 校史时间轴 (沉浸式红色风格) --- */
+
+.timeline-section {
+    /* 背景图 + 深红渐变遮罩 */
+    background: 
+        linear-gradient(135deg, rgba(160, 13, 36, 0.96) 0%, rgba(100, 8, 20, 0.98) 100%),
+        url('../images/museum_banner.png'); /* 建议换一张不同的校园远景图，或者复用 */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* 视差滚动效果，显得更高端 */
+    position: relative;
+    color: var(--white);
+    padding: 100px 0;
+}
+
+/* 标题区域适配暗色背景 */
+.timeline-section .section-header h2 {
+    color: var(--white);
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.timeline-section .section-header h2::after {
+    background: var(--gold); /* 保持金色下划线 */
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* 金色发光 */
+}
+
+.timeline-section .section-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- 校史时间轴 (高端优化版) --- */
+
+/* 时间轴主容器竖线 */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* 中央金色渐变竖线 */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        rgba(255,255,255,0) 0%, 
+        rgba(255,215,0,0.5) 15%, 
+        rgba(255,215,0,0.5) 85%, 
+        rgba(255,255,255,0) 100%);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 5rem;
+    display: flex;
+    align-items: center;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* 时间轴节点（圆点）- 增加发光呼吸感 */
+.timeline-marker {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    background: var(--dark-red); /* 内部深红 */
+    border: 4px solid var(--gold); /* 外部金色边框 */
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    transition: all 0.3s ease;
+}
+
+/* 节点悬停交互 */
+.timeline-item:hover .timeline-marker {
+    transform: translateX(-50%) scale(1.3);
+    background: var(--gold);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+}
+
+/* 内容卡片 - 渐变流光玻璃风格 (核心优化) */
+.timeline-content {
+    width: 45%;
+    /* 线性渐变模拟光照，比纯色更透气 */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+    /* 强力磨砂 */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 2.5rem;
+    border-radius: 16px;
+    /* 金色微边框 */
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    /* 内发光+外阴影，制造厚度感 */
+    box-shadow: 
+        inset 0 0 20px rgba(255, 255, 255, 0.05),
+        0 15px 35px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 卡片悬停交互 - 上浮+高亮 */
+.timeline-content:hover {
+    transform: translateY(-8px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border-color: rgba(255, 215, 0, 0.6);
+    box-shadow: 
+        inset 0 0 20px rgba(255, 255, 255, 0.1),
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+/* 连接线（指向中间的小横线）- 渐变金 */
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 38px; /* 对齐年份标签中心 */
+    width: 30px;
+    height: 1px;
+    /* 默认为右侧连接线（奇数项） */
+    background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+/* 奇数项连接线位置 */
+.timeline-item:nth-child(odd) .timeline-content::before {
+    right: -30px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+}
+/* 偶数项连接线位置 */
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: -30px;
+    background: linear-gradient(-90deg, var(--gold), transparent);
+}
+
+/* 年份标签 - 红金配色 (美观优化) */
+.timeline-year {
+    display: inline-block;
+    /* 金色流光渐变背景 */
+    background: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
+    /* 深红文字 */
+    color: #8B0000;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px 12px 4px 12px; /* 异形圆角 */
+    font-weight: 800;
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* 卡片标题 - 亮金色 */
+.timeline-content h3 {
+    color: #FFD700;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* 图片容器 */
+.timeline-image {
+    width: 100%;
+    height: 220px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.timeline-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.timeline-image:hover img {
+    transform: scale(1.1);
+}
+
+/* 正文文字 - 提高对比度 */
+.timeline-content p {
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    font-weight: 300;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+    }
+
+    .timeline-marker {
+        left: 30px;
+    }
+
+    .timeline-item {
+        flex-direction: column !important;
+        align-items: flex-start;
+        padding-left: 70px;
+        margin-bottom: 3rem;
+    }
+
+    .timeline-content {
+        width: 100%;
+    }
+
+    /* 移动端隐藏连接线 */
+    .timeline-content::before {
+        display: none;
+    }
+}
+
+/* 红色文化 */
+.red-culture-section {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+}
+
+.red-culture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.culture-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.culture-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.culture-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.culture-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.culture-image:hover img {
+    transform: scale(1.1);
+}
+
+.culture-image .placeholder-image {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.culture-content {
+    padding: 2rem;
+}
+
+.culture-content h3 {
+    color: var(--primary-red);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.culture-content p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* 三种精神 */
+.spirit-section {
+    background: var(--white);
+}
+
+.spirit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.spirit-card {
+    background: linear-gradient(135deg, var(--white) 0%, #f9f9f9 100%);
+    padding: 2.5rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid var(--light-gray);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.spirit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-red), var(--gold));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.spirit-card:hover::before {
+    transform: scaleX(1);
+}
+
+.spirit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-red);
+}
+
+.spirit-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.spirit-card h3 {
+    color: var(--primary-red);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.spirit-person {
+    color: var(--gold);
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.spirit-card p {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* --- 官方风格页脚 (Official Footer Style) --- */
+
+/* 1. 顶部全景横幅 */
+.footer-banner {
+    width: 100%;
+    height: 300px; /* 这里的图片高度可以根据图片比例调整 */
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid var(--gold); /* 图片和红底之间的金线 */
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 10s ease; /* 缓慢缩放动效 */
+}
+
+/* 给图片加一层微弱的遮罩，防止太抢眼 */
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(160, 13, 36, 0.3) 100%);
+}
+
+.footer-banner:hover .banner-img {
+    transform: scale(1.05);
+}
+
+/* 2. 红色主体区域 */
+.footer-main {
+    background-color: #A00D24; /* 官方深红 */
+    background-image: url('data:image/svg+xml,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r="1" fill="rgba(255,255,255,0.05)"/></svg>'); /* 微弱纹理 */
+    color: #FFFFFF;
+    padding: 60px 0;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+.footer-layout {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+/* 3. 左侧品牌区 */
+.footer-brand-area {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-logo {
+    height: 80px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.brand-text h2 {
+    font-size: 1.8rem;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: 2px;
+}
+
+.brand-text span {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 5px;
+}
+
+/* 4. 中间分割线 */
+.footer-divider-line {
+    width: 1px;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4), transparent);
+}
+
+/* 5. 右侧信息区 */
+.footer-info-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 20px; /* 与分割线保持距离 */
+}
+
+.info-row {
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+}
+
+.info-label {
+    color: rgba(255, 255, 255, 0.8);
+    margin-right: 10px;
+    min-width: 50px; /* 对齐标签 */
+}
+
+.info-value {
+    color: #FFFFFF;
+}
+
+.info-link {
+    color: #FFFFFF;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.info-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+}
+
+.info-link:hover {
+    color: var(--gold);
+}
+
+.info-link:hover::after {
+    width: 100%;
+}
+
+/* 版权区域 */
+.copyright-row {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+/* 响应式适配 */
+@media (max-width: 900px) {
+    .footer-divider-line {
+        display: none; /* 平板/手机隐藏竖线 */
+    }
+    
+    .footer-layout {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+    
+    .footer-info-area {
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .footer-banner {
+        height: 200px; /* 手机端横幅变矮 */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-brand-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .footer-logo {
+        height: 60px;
+    }
+    
+    .brand-text h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 平板端自适应 */
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-header h2 {
+        font-size: 2.2rem;
+    }
+    
+    .contact-header h2::before {
+        font-size: 3rem; /* 缩小背景英文 */
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr; /* 手机端单列 */
+        gap: 1.5rem;
+    }
+    
+    .copyright {
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+    
+    .divider {
+        display: none;
+    }
+}
+
+/* 动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: var(--primary-red);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 2rem 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-brand {
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    .logo-img {
+        height: 35px;
+    }
+
+    .nav-brand h1 {
+        font-size: 1.2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.8rem;
+    }
+
+    .hero-description {
+        font-size: 1.2rem;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        flex-direction: row !important;
+        padding-left: 3rem;
+    }
+
+    .timeline-marker {
+        left: 20px;
+    }
+
+    .timeline-content {
+        width: 100%;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .intro-grid,
+    .red-culture-grid,
+    .spirit-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* 针对手机端的高端卡片字体微调 */
+    .stat-number {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .btn-primary {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+}
