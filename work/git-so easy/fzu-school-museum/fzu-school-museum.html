@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福州大学校史馆 - 校史与红色文化展示</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 配置Tailwind自定义主题 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#C41E3A', // 福大红色
+                        secondary: '#D4AF37', // 金色点缀
+                        dark: '#1A1A2E',
+                        light: '#F5F5F7'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .timeline-dot {
+                @apply absolute w-4 h-4 rounded-full bg-primary border-4 border-white shadow-md z-10;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .timeline-line {
+                @apply absolute w-0.5 bg-gray-300 z-0;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 100%;
+            }
+            .timeline-item-left {
+                @apply ml-0 mr-auto text-right;
+            }
+            .timeline-item-right {
+                @apply ml-auto mr-0 text-left;
+            }
+            .timeline-content {
+                @apply w-[45%] p-6 rounded-lg shadow-lg transition-all duration-500 hover:shadow-xl;
+            }
+            .img-container {
+                @apply overflow-hidden rounded-md mb-4;
+            }
+            .img-container img {
+                @apply w-full h-auto transition-transform duration-700 hover:scale-105;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+    <!-- 顶部导航 -->
+    <header class="bg-primary text-white shadow-md sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-university text-2xl"></i>
+                <h1 class="text-xl md:text-2xl font-bold">福州大学校史馆</h1>
+            </div>
+            <!-- 桌面端导航（仅在中等屏幕及以上显示） -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="#timeline" class="hover:text-secondary transition-colors">校史沿革</a>
+                <a href="#red-culture" class="hover:text-secondary transition-colors">红色文化</a>
+                <a href="https://www.fzu.edu.cn/" target="_blank" rel="noopener noreferrer" class="hover:text-secondary transition-colors">了解福大</a>
+            </nav>
+            <!-- 移动端菜单按钮（仅在小屏幕显示） -->
+            <button class="md:hidden text-xl" id="menuBtn">
+                <i class="fa fa-bars"></i>
+            </button>
+            <!-- 移动端导航菜单（默认隐藏，点击按钮显示） -->
+            <div class="md:hidden absolute top-full left-0 w-full bg-primary/95 backdrop-blur-sm shadow-lg hidden transition-all duration-300" id="mobileMenu">
+                <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                    <a href="#timeline" class="text-white hover:text-secondary transition-colors py-2">校史沿革</a>
+                    <a href="#red-culture" class="text-white hover:text-secondary transition-colors py-2">红色文化</a>
+                    <a href="https://www.fzu.edu.cn/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-secondary transition-colors py-2">了解福大</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="relative h-[60vh] bg-dark overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center opacity-70" style="background-image: url('images/hero-bg.jpeg');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/70 to-dark/50"></div>
+        <div class="container mx-auto px-4 h-full flex items-center relative z-10">
+            <div class="max-w-2xl">
+                <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white mb-4 leading-tight">
+                    福州大学<br>校史与红色文化展示
+                </h2>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 mb-8">
+                    见证福大发展历程，传承红色基因，弘扬福大精神
+                </p>
+                <a href="#timeline" class="inline-block bg-secondary text-dark px-6 py-3 rounded-md font-semibold hover:bg-secondary/90 transition-all transform hover:-translate-y-1 shadow-lg">
+                    浏览校史 <i class="fa fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 时间轴·校史沿革 -->
+    <section id="timeline" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">时间轴·校史沿革</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+                <p class="mt-6 text-gray-600 max-w-3xl mx-auto">
+                    福州大学自1958年建校以来，历经六十余载风雨兼程，始终与国家发展同频共振，
+                    在人才培养、科学研究和社会服务等方面取得了丰硕成果。
+                </p>
+            </div>
+
+            <!-- 时间轴容器 -->
+            <div class="relative">
+                <!-- 中轴线 -->
+                <div class="timeline-line"></div>
+                
+                <!-- 1958年 -->
+                <div class="timeline-item mb-16 relative">
+                    <div class="timeline-dot top-6"></div>
+                    <div class="timeline-content timeline-item-left bg-gray-50">
+                        <h3 class="text-2xl font-bold text-primary mb-2">1958年</h3>
+                        <div class="img-container">
+                            <img src="images/establish.jpeg" alt="1958年福州大学建校" class="w-full">
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">福州大学建校</h4>
+                        <p class="text-gray-700">
+                            福州大学正式建校，作为福建省属重点大学，肩负起为地方经济建设和社会发展培养人才的使命。
+                            建校初期，学校在艰难的条件下起步，汇聚了一批热心教育事业的学者，奠定了办学的基础。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 1960年代 -->
+                <div class="timeline-item mb-16 relative">
+                    <div class="timeline-dot top-6"></div>
+                    <div class="timeline-content timeline-item-right bg-gray-50">
+                        <h3 class="text-2xl font-bold text-primary mb-2">1960年代</h3>
+                        <h4 class="text-lg font-semibold mb-2">工科实验楼建成</h4>
+                        <p class="text-gray-700">
+                            学校聚焦工科优势学科建设，同时融入红色教育理念，组织师生参与社会实践与爱国教育活动，
+                            将红色文化基因融入人才培养过程。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 1978年 -->
+                <div class="timeline-item mb-16 relative">
+                    <div class="timeline-dot top-6"></div>
+                    <div class="timeline-content timeline-item-left bg-gray-50">
+                        <h3 class="text-2xl font-bold text-primary mb-2">1978年</h3>
+                        <h4 class="text-lg font-semibold mb-2">恢复高考后首届新生入学</h4>
+                        <p class="text-gray-700">
+                            改革开放后，学校迎来发展新机遇，恢复高考后的首届新生入学，学科建设与人才培养规模逐步扩大，
+                            红色文化教育也在新时期焕发出新的活力。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 2005年 -->
+                <div class="timeline-item mb-16 relative">
+                    <div class="timeline-dot top-6"></div>
+                    <div class="timeline-content timeline-item-right bg-gray-50">
+                        <h3 class="text-2xl font-bold text-primary mb-2">2005年</h3>
+                        <div class="img-container">
+                            <img src="images/qishanxiaomen.jpeg" alt="2005年福州大学旗山校区启用" class="w-full">
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">旗山校区启用</h4>
+                        <p class="text-gray-700">
+                            福州大学旗山校区正式启用，校区建设融入了红色文化元素，如校史纪念馆、红色文化长廊等，
+                            为校史与红色文化的展示和传承提供了新的载体。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 2017年 -->
+                <div class="timeline-item mb-16 relative">
+                    <div class="timeline-dot top-6"></div>
+                    <div class="timeline-content timeline-item-left bg-gray-50">
+                        <h3 class="text-2xl font-bold text-primary mb-2">2017年</h3>
+                        <h4 class="text-lg font-semibold mb-2">入选"双一流"建设高校</h4>
+                        <p class="text-gray-700">
+                            福州大学入选国家"双一流"建设高校名单，学校在发展过程中始终坚守红色初心，
+                            将校史积淀与红色文化传承相结合，助力学校在新时代实现高质量发展。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 2023年 -->
+                <div class="timeline-item mb-16 relative">
+                    <div class="timeline-dot top-6"></div>
+                    <div class="timeline-content timeline-item-right bg-gray-50">
+                        <h3 class="text-2xl font-bold text-primary mb-2">2023年</h3>
+                        <div class="img-container">
+                            <img src="images/65years.png" alt="2023年福州大学建校65周年校庆活动" class="w-full">
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">建校65周年校庆</h4>
+                        <p class="text-gray-700">
+                            福州大学迎来建校65周年校庆，期间举办了校史展览、红色文化论坛等系列活动，
+                            系统梳理校史脉络，弘扬红色文化精神，凝聚全校师生校友的奋进力量。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 红色文化·福大印记 -->
+    <section id="red-culture" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">红色文化·福大印记</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+                <p class="mt-6 text-gray-600 max-w-3xl mx-auto">
+                    福州大学始终坚持党的领导，传承红色基因，将红色文化融入教育教学全过程，
+                    培养具有家国情怀和社会责任感的高素质人才。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- 福大红色基因溯源 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images/rededucatejidi.jpeg" alt="福州大学红色文化教育基地" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fa fa-history mr-2"></i> 福大红色基因溯源
+                        </h3>
+                        <p class="text-gray-700">
+                            福州大学的红色文化基因源于建校初期的爱国办学传统，建校以来，学校始终坚持党的领导，传承红色薪火。
+                            老一辈福大人秉持爱国奉献精神，在教学、科研中践行红色使命，为学校留下了宝贵的红色精神财富。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 师生红色实践 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images/redacticity.jpeg" alt="福州大学师生红色研学活动" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fa fa-users mr-2"></i> 师生红色实践
+                        </h3>
+                        <p class="text-gray-700">
+                            学校常态化组织师生开展红色研学、志愿服务等实践活动，走进革命老区、红色纪念馆，实地感悟红色文化，
+                            将校史中的红色故事与社会实践相结合，让红色文化在青年学子中代代相传。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <i class="fa fa-university text-2xl text-secondary"></i>
+                        <h3 class="text-xl font-bold">福州大学校史馆</h3>
+                    </div>
+                    <p class="text-gray-400">传承校史文脉，弘扬红色精神</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://weibo.com/u/1870688711" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-secondary transition-colors" title="福州大学微博官方账号">
+                         <i class="fa fa-weibo text-xl"></i>
+                    </a>
+                    <a href="https://space.bilibili.com/380362972?spm_id_from=333.337.0.0" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#FB7299] transition-colors px-2" title="福州大学B站官方账号">
+                           B站
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>© git易如反掌啊小组 版权所有</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // 滚动时导航栏样式变化
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+                header.classList.add('bg-primary/95');
+                header.classList.add('backdrop-blur-sm');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+                header.classList.remove('bg-primary/95');
+                header.classList.remove('backdrop-blur-sm');
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 时间轴动画
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-content, #red-culture .bg-white').forEach(item => {
+            item.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
+            observer.observe(item);
+        });
+
+        // 移动端菜单交互
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // 切换图标（汉堡/叉号）
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    </script>
+</body>
+</html>
