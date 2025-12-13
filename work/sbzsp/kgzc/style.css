@@ -1,0 +1,948 @@
+/* =========================================
+   1. 基础重置 & 全局样式
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 关键：防止圆点和布局计算错误 */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* 平滑滚动 */
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* 背景色优化：浅灰背景让内容卡片更突出 */
+    background-color: #f9f9f9; 
+    color: #333;
+    line-height: 1.6;
+}
+
+/* =========================================
+   2. 顶部导航栏 (Sticky)
+   ========================================= */
+.navbar {
+    background-color: #C8102E; /* 福大红 */
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s;
+    padding-bottom: 5px;
+}
+
+.nav-links a:hover {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+}
+
+/* =========================================
+   3. 头部大图 (Hero Banner) - 新增
+   ========================================= */
+.hero-banner {
+    width: 100%;
+    height: 400px; /* 大图高度 */
+    background-image: url('image\\image_Hero Banner.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin-bottom: -40px; /* 让标题卡片压住图片底部，更有层次 */
+}
+
+.hero-overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* 黑色半透明蒙层 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-overlay h1 {
+    color: white;
+    font-size: 3rem;
+    letter-spacing: 5px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    border: 2px solid white;
+    padding: 10px 30px;
+}
+
+/* =========================================
+   4. 布局容器 & 标题
+   ========================================= */
+.container {
+    max-width: 1000px;
+    margin: 0 auto; /* 上下边距由子元素控制 */
+    padding: 0 20px;
+    min-height: 100vh;
+}
+
+.header {
+    /* 关键：跳转偏移量，防止被导航栏遮挡 */
+    scroll-margin-top: 80px; 
+    
+    text-align: center;
+    margin-bottom: 60px;
+    
+    /* 样式美化：白色卡片风格 */
+    -webkit-backdrop-filter: blur(10px); 
+    backdrop-filter: blur(10px); /* 兼容 Safari */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 10; /* 保证压在Banner上面 */
+}
+
+.header h1 {
+    color: #C8102E;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #666;
+}
+
+/* =========================================
+   5. 时间轴核心 (Timeline)
+   ========================================= */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 150px; /* 保证红线足够长 */
+    padding-top: 20px;
+}
+
+/* 红线 */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #C8102E;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    z-index: 0;
+}
+
+/* 卡片容器 */
+.card {
+    padding: 10px 40px;
+    position: relative;
+    background-color: transparent; /* 背景透明 */
+    width: 50%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.left { left: 0; }
+.right { left: 50%; }
+
+/* 圆圈 (已加大) */
+.card::after {
+    content: '';
+    position: absolute;
+    width: 36px; /* 大圆圈 */
+    height: 36px;
+    background-color: white;
+    border: 5px solid #C8102E;
+    border-radius: 50%;
+    top: 15px; 
+    z-index: 10;
+    box-shadow: 0 0 0 4px #f9f9f9; /* 外圈颜色匹配页面背景 */
+}
+
+/* 圆圈定位修正 */
+.left::after { right: -18px; }
+.right::after { left: -18px; }
+
+/* =========================================
+   6. 内容详情卡片
+   ========================================= */
+.content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.content:hover {
+    transform: translateY(-5px);
+}
+
+.timeline-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.content:hover .timeline-img {
+    transform: scale(1.02);
+}
+
+.content h2 {
+    color: #C8102E;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.content .year {
+    font-weight: bold;
+    color: #888;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* =========================================
+   7. 底部页脚 (Footer) - 新增
+   ========================================= */
+.footer {
+    background-color: #333;
+    color: #bbb;
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   8. 回到顶部按钮
+   ========================================= */
+#backBtn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: #C8102E;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: background-color 0.3s;
+}
+
+#backBtn:hover {
+    background-color: #a00d25;
+}
+
+/* =========================================
+   9. 响应式适配
+   ========================================= */
+@media screen and (max-width: 600px) {
+    .nav-links { display: none; }
+    .nav-container { justify-content: center; }
+    
+    .timeline::after { left: 31px; transform: translateX(0); }
+    
+    .card { width: 100%; padding-left: 70px; padding-right: 25px; }
+    
+    .card::after { left: 16px; } /* 34px - 18px = 16px */
+    
+    .right { left: 0%; }
+}
+
+/* =========================================
+   学院风采页专属样式 (College Profile)
+   ========================================= */
+
+/* --- 1. 学院头部 Hero --- */
+.college-hero {
+    width: 100%;
+    height: 700px;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('image\\image_CSbuilding.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero-content h2 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    
+    background-color: transparent; /* 背景改为透明 */
+    border: 1px solid rgba(255, 255, 255, 0.7); /* 新增：加一个半透明白边框，更有质感 */
+    
+    padding: 5px 15px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 10px; /* 稍微和标题拉开点距离 */
+}
+
+/* --- 2. 统计数据卡片 (Stats) --- */
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -50px; /* 上移，压住 Header，形成层次感 */
+    margin-bottom: 60px;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+    flex-wrap: wrap; /* 手机端换行 */
+}
+
+.stat-card {
+    background: white;
+    flex: 1;
+    min-width: 200px;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px); /* 悬停上浮 */
+}
+
+.stat-card i {
+    font-size: 2.5rem;
+    color: #C8102E;
+    margin-bottom: 15px;
+}
+
+.stat-card h3 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.stat-card p {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* --- 3. 通用标题样式 --- */
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.divider {
+    width: 60px;
+    height: 4px;
+    background-color: #C8102E;
+    margin: 0 auto;
+}
+
+/* --- 4. 师资队伍网格 (Grid Layout) --- */
+.faculty-grid {
+    display: grid;
+    /* 自动适应列数，每列最小250px */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.faculty-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s;
+    border: 1px solid #eee;
+}
+
+.faculty-card:hover {
+    box-shadow: 0 15px 30px rgba(200, 16, 46, 0.15); /* 红色阴影 */
+    transform: translateY(-5px);
+}
+
+.img-box {
+    height: 250px;
+    overflow: hidden;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.faculty-card:hover .img-box img {
+    transform: scale(1.1); /* 图片放大效果 */
+}
+
+.faculty-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.faculty-info h3 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.faculty-info .title {
+    display: block;
+    color: #C8102E;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.faculty-info p {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    height: 40px; /* 固定高度，保证对齐 */
+    overflow: hidden;
+}
+
+.btn-profile {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid #C8102E;
+    color: #C8102E;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.btn-profile:hover {
+    background-color: #C8102E;
+    color: white;
+}
+
+/* --- 5. 学科平台 (Research) --- */
+.programs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.program-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-left: 5px solid #C8102E; /* 左侧红条装饰 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    flex: 1 1 340px;
+    max-width: 400px;
+}
+
+.program-card:hover {
+    background-color: #C8102E;
+    color: white;
+}
+
+/* 悬停时改变文字和图标颜色 */
+.program-card:hover h3, 
+.program-card:hover p,
+.program-card:hover .icon-bg i {
+    color: white;
+}
+
+.icon-bg {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.icon-bg i {
+    color: #C8102E;
+    transition: 0.3s;
+}
+
+.program-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.program-card p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- 移动端适配 --- */
+@media screen and (max-width: 768px) {
+    .stats-container {
+        flex-direction: column; /* 数据卡片竖排 */
+        margin-top: 20px;
+    }
+    
+    .programs-grid {
+        grid-template-columns: 1fr; /* 学科单列 */
+    }
+    
+    .college-hero h1 { font-size: 2rem; }
+    .college-hero h2 { font-size: 1.2rem; }
+}
+
+/* =========================================
+   校园地图页专属样式 (Map Page)
+   ========================================= */
+
+/* --- 1. 地图容器 --- */
+.map-wrapper {
+    position: relative; /* 关键：让里面的图钉绝对定位 */
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 50px auto;
+    border-radius: 10px;
+    overflow: hidden; /* 防止图片圆角溢出 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 5px solid white;
+}
+
+.map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- 2. 交互图钉 (Pin) --- */
+.map-pin {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+    transform: translate(-50%, -100%); /* 让针尖对准坐标点 */
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.map-pin:hover {
+    transform: translate(-50%, -110%) scale(1.1); /* 悬停稍微放大 */
+    z-index: 15;
+}
+
+/* 图标本体 */
+.map-pin i {
+    color: #C8102E;
+    font-size: 2.5rem;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+}
+
+/* 标签文字 */
+.pin-label {
+    display: block;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* 呼吸动画圈圈 */
+.pin-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: rgba(200, 16, 46, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -100%);
+    animation: pulse 2s infinite;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -100%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -100%) scale(3); opacity: 0; }
+}
+
+/* --- 3. 弹窗模态框 (Modal) --- */
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6); /* 黑色半透明背景 */
+    -webkit-backdrop-filter: blur(5px); /* Safari 9+, iOS 9+ 兼容 */
+    backdrop-filter: blur(5px); /* 背景模糊 */
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover { color: #C8102E; }
+
+.modal-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.modal h2 { color: #C8102E; margin-bottom: 10px; }
+.modal p { color: #555; line-height: 1.6; text-align: left; }
+
+/* 简单的淡入动画 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* =========================================
+   地图页头部背景 (Map Header)
+   ========================================= */
+
+#map-header {
+    /* 1. 设置背景图 + 黑色半透明遮罩 */
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+    
+    /* 2. 背景图设置 */
+    background-size: cover;   /* 填满盒子 */
+    background-position: center; /* 居中显示 */
+    
+    /* 3. 文字颜色改为白色 */
+    color: white;
+    
+    /* 4. 保持圆角和阴影，保留卡片感 */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    
+    /* 5. 去掉原来 header 可能有的白色背景 */
+    background-color: transparent; 
+    border: none; /* 去掉可能的边框 */
+}
+
+/* 强制把里面的标题文字也变成白色 */
+#map-header h1 {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* 加点阴影更清晰 */
+}
+
+#map-header p {
+    color: #f0f0f0; /* 稍微灰一点的白 */
+    background-color: rgba(200, 16, 46, 0.8); /* 半透明福大红背景 */
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+}
+
+/* =========================================
+     顶部导航栏 & 夜间模式按钮
+   ========================================= */
+
+/* 1. 导航栏外壳 */
+.navbar {
+    background-color: #C8102E;
+    color: white;
+    position: sticky; /* 确保它粘在顶部 */
+    top: 0;
+    width: 100%;      /* 确保宽度占满 */
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    height: 60px;     /* 固定高度，防止跳动 */
+}
+
+/* 2. 导航栏容器布局 (Flexbox) */
+.nav-container {
+    max-width: 1200px;
+    height: 100%;     /* 填满外壳高度 */
+    margin: 0 auto;
+    padding: 0 20px;
+    
+    /* 关键布局设置 */
+    display: flex;
+    align-items: center; /* 垂直绝对居中 */
+    /* 注意：不再使用 space-between，而是用 margin-left: auto 来推 */
+}
+
+/* 3. Logo 区域 */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    /* 防止 Logo 被压缩 */
+    flex-shrink: 0; 
+}
+
+/* 4. 菜单链接列表 */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    
+    /* ▼▼▼ 核心技巧 ▼▼▼ */
+    /* 自动占据左侧所有空余空间，从而把自己推到最右边 */
+    margin-left: auto; 
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+/* 5. 夜间模式切换按钮 (小月亮) */
+#theme-toggle {
+    background: transparent; /* 透明背景 */
+    border: 1px solid rgba(255,255,255,0.3); /* 淡淡的边框 */
+    color: white;
+    cursor: pointer;
+    
+    /* 大小控制 */
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; /* 正圆形 */
+    
+    /* 布局控制 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px; /* 离左边的菜单稍微远一点 */
+    transition: 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: rgba(255,255,255,0.2);
+    transform: rotate(15deg); /* 悬停时稍微转一下，增加趣味 */
+}
+
+#theme-toggle i {
+    font-size: 16px; /* 图标大小 */
+}
+
+/* 手机端适配修正 */
+@media screen and (max-width: 600px) {
+    /* 手机上隐藏文字菜单 */
+    .nav-links { display: none; }
+    
+    /* 手机上只保留 Logo 和 小月亮，并把小月亮推到最右 */
+    #theme-toggle { margin-left: auto; }
+}
+
+/* 1. 切换按钮样式 */
+.theme-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-left: 20px;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.theme-btn:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* 2. 夜间模式全局背景与文字 */
+body.dark-mode {
+    background-color: #121212 !important; /* 深黑背景 */
+    color: #e0e0e0;            /* 浅灰文字 */
+}
+
+/* 3. 覆盖所有白色卡片的背景 */
+body.dark-mode .content, 
+body.dark-mode .header, 
+body.dark-mode .faculty-card,
+body.dark-mode .program-card,
+body.dark-mode .stat-card,
+body.dark-mode .modal-content,
+body.dark-mode .header /* 针对地图页头部 */
+{
+    background-color: #1e1e1e !important; /* 卡片变深灰 */
+    color: #e0e0e0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.8); /* 阴影加深 */
+    border: 1px solid #333; /* 加个微弱的边框防止混成一团 */
+}
+
+/* 4. 标题颜色高亮 */
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3,
+body.dark-mode .faculty-info h3,
+body.dark-mode .program-card h3,
+body.dark-mode .stat-card h3 {
+    color: #ff6b81 !important; /* 夜间模式下用亮一点的粉红，比深红更清晰 */
+}
+
+/* 5. 普通文字变暗 */
+body.dark-mode p,
+body.dark-mode .faculty-info p,
+body.dark-mode .program-card p,
+body.dark-mode .stat-card p {
+    color: #bbb !important;
+}
+
+/* 6. 时间轴特定样式修复 */
+body.dark-mode .content .year {
+    color: #aaa;
+}
+
+body.dark-mode .card::after {
+    background-color: #1e1e1e; /* 圆点中心变黑 */
+    border-color: #ff6b81;     /* 圆点边框变亮红 */
+}
+
+body.dark-mode .timeline::after {
+    background-color: #ff6b81; /* 中轴线变亮红 */
+}
+
+/* 7. 校园地图特定修复 */
+body.dark-mode .pin-label {
+    background: rgba(30, 30, 30, 0.9);
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark-mode .modal p {
+    color: #ccc;
+}
+
+/* 8. 学院风采特定修复 */
+body.dark-mode .program-card {
+    border-left: 5px solid #ff6b81;
+}
+
+body.dark-mode .program-card:hover {
+    background-color: #C8102E !important; /* 悬停还是保持福大红 */
+}
+
+body.dark-mode .icon-bg i {
+    color: #ff6b81;
+}
+
+body.dark-mode .btn-profile {
+    border-color: #ff6b81;
+    color: #ff6b81;
+}
+
+body.dark-mode .btn-profile:hover {
+    background-color: #ff6b81;
+    color: white;
+}

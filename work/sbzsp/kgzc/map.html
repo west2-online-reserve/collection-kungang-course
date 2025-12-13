@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>印象福大 - 校园导览</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <img src="image/fzu.png" alt="校徽" class="nav-icon" style="height: 32px; width: auto;">
+            <span class="logo-text">福州大学 | 印象福大</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="index.html#history-header">云上校史</a></li>
+            <li><a href="map.html">校园地图</a></li>
+            <li><a href="college.html">学院风采</a></li>
+        </ul>
+        
+        <button id="theme-toggle" class="theme-btn" title="切换主题">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</nav>
+
+<div class="container">
+    
+    <div class="header" style="
+    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('image\\image_Eastgate.jpg');
+    
+    background-size: cover;
+    background-position: center;
+    
+    /* 255,255,255 是白色。0.95 是透明度 (1是不透明，0是全透明) */
+    color: rgba(255, 255, 255, 0.5);
+    
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    border-radius: 10px;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    text-align: center;
+">
+    <h1 style="color: #FFFFFF;">福州大学旗山校区导览</h1>
+    
+    <p style="
+        display: inline-block;       /* 保持块状以便设置背景 */
+        padding: 5px 15px;           /* 内边距：上下5px，左右15px */
+        border-radius: 20px;         /* 圆角：调大一点显得更圆润 */
+        
+        /* 1. 修改位置 (通过外边距控制) */
+        margin-top: 120px;    
+
+        /* 2. 背景透明度 (福大红的 RGBA 版) */
+        background-color: rgba(200, 16, 46, 0.6);
+
+        /* 3. 文字透明度 */
+        color: rgba(255, 255, 255, 0.8);
+    ">
+        点击地图上的红点，探索美丽校园
+    </p>
+</div>
+    <div class="map-wrapper">
+        <img src="image\image_map.jpg" alt="校园地图" class="map-image">
+
+        <div class="map-pin" data-id="1" style="top: 50%; left: 65%;">
+            <div class="pin-pulse"></div>
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="pin-label">图书馆</span>
+        </div>
+
+        <div class="map-pin" data-id="2" style="top: 52%; left: 98%;">
+            <div class="pin-pulse"></div>
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="pin-label">东门</span>
+        </div>
+
+        <div class="map-pin" data-id="3" style="top: 58%; left: 38%;">
+            <div class="pin-pulse"></div>
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="pin-label">第一田径场</span>
+        </div>
+
+        <div class="map-pin" data-id="4" style="top: 75%; left: 80%;">
+            <div class="pin-pulse"></div>
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="pin-label">福友阁</span>
+        </div>
+
+        <div class="map-pin" data-id="5" style="top: 37%; left: 94%;">
+            <div class="pin-pulse"></div>
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="pin-label">计数学院楼</span>
+        </div>
+        
+        <div class="map-pin" data-id="6" style="top: 45%; left: 93%;">
+            <div class="pin-pulse"></div>
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="pin-label">晋江楼</span>
+        </div>
+        
+    </div>
+</div>
+
+<div id="locationModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <img src="" alt="地点图片" id="modalImg" class="modal-img">
+        <h2 id="modalTitle">地点名称</h2>
+        <p id="modalDesc">地点简介...</p>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <p>&copy; 2025 福州大学 | sbzsp组</p>
+        <p>地址：福建省福州市福州地区大学新区学园路2号</p>
+    </div>
+</footer>
+
+<button id="backBtn" title="回到顶部">Top</button>
+<script src="script.js"></script>
+</body>
+</html>
