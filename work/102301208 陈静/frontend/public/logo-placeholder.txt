@@ -1,0 +1,22 @@
+# 校徽图片说明
+
+请将您的校徽图片文件命名为 `logo.png` 并放置在此文件夹中。
+
+## 图片要求：
+- 文件名：logo.png
+- 推荐尺寸：200x200 像素或更大（正方形）
+- 格式：PNG（支持透明背景）或 JPG
+- 建议：使用透明背景的 PNG 格式效果最佳
+
+## 替换步骤：
+1. 准备好校徽图片文件
+2. 将图片重命名为 logo.png
+3. 将 logo.png 复制到 code/frontend/public/ 文件夹
+4. 修改 code/frontend/src/layouts/MainLayout.vue 文件：
+   - 将 `<div class="school-logo-placeholder">校徽</div>` 
+   - 改为 `<img src="/logo.png" alt="校徽" class="school-logo" />`
+   - 在样式部分，删除 .school-logo-placeholder 样式
+   - 取消 .school-logo 样式的注释
+5. 刷新浏览器即可看到校徽显示
+
+当前使用的是占位文字"校徽"，替换后会显示真实的校徽图片。
