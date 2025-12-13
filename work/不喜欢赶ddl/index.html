@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福州大学校史与红色文化展馆</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+
+        :root {
+            --fzu-red: #c00a1e;
+            --fzu-dark-red: #8b0000;
+            --gold: #d4af37;
+            --light-bg: #f9f5f0;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, var(--fzu-dark-red) 0%, var(--fzu-red) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .university-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: white;
+            border-radius: 50%;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--fzu-red);
+            text-shadow: 1px 1px 0 #ccc;
+        }
+
+        /* 导航栏 */
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: var(--fzu-red);
+            transform: translateY(-2px);
+        }
+
+        /* 主内容区域 */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .intro-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--fzu-red);
+        }
+
+        .section-title {
+            color: var(--fzu-red);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--gold);
+        }
+
+        /* 时间轴样式 */
+        .timeline-section {
+            margin: 60px 0;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--fzu-red);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--fzu-red);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid var(--fzu-red);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: -10px;
+            background-color: white;
+            border: 4px solid var(--fzu-red);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* 图片展示区 */
+        .gallery-section {
+            margin: 60px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            height: 300px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        .img-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(192, 10, 30, 0.9));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .img-caption {
+            transform: translateY(0);
+        }
+
+        /* 红色文化专区 */
+        .red-culture {
+            background: linear-gradient(135deg, #f9f5f0 0%, #fff5f5 100%);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 60px 0;
+            border: 2px solid var(--fzu-red);
+            position: relative;
+        }
+
+        .red-culture::before {
+            content: "红色基因";
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background-color: var(--fzu-red);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .culture-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .culture-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-top: 4px solid var(--fzu-red);
+        }
+
+        .culture-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .culture-icon {
+            font-size: 2.5rem;
+            color: var(--fzu-red);
+            margin-bottom: 15px;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .fzu-motto {
+            font-style: italic;
+            color: #ccc;
+            margin: 20px 0;
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="header-content">
+            <div class="university-logo">
+                <div class="logo-text">福大</div>
+            </div>
+            <h1>福州大学校史与红色文化展馆</h1>
+            <p class="subtitle">明德至诚 · 博学远志 · 传承红色基因 · 砥砺奋进前行</p>
+        </div>
+    </header>
+
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <a href="#intro" class="nav-item active"><i class="fas fa-university"></i> 校史简介</a>
+            <a href="#timeline" class="nav-item"><i class="fas fa-history"></i> 历史沿革</a>
+            <a href="#gallery" class="nav-item"><i class="fas fa-images"></i> 历史影像</a>
+            <a href="#culture" class="nav-item"><i class="fas fa-flag"></i> 红色文化</a>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <div class="container">
+        <!-- 校史简介 -->
+        <section id="intro" class="intro-section">
+            <h2 class="section-title"><i class="fas fa-landmark"></i> 福州大学校史简介</h2>
+            <p>福州大学创建于1958年，坐落于素有"海上丝绸之路"门户之称的历史文化名城福州，是一所以工为主、理工结合，理、工、经、管、文、法、艺等多学科协调发展的国家"双一流"建设高校、国家"211工程"重点建设大学。</p>
+            <p>建校以来，福州大学始终秉承"明德至诚，博学远志"的校训，弘扬以张孤梅同志为代表的艰苦奋斗的创业精神、以卢嘉锡先生为代表的严谨求实的治学精神、以魏可镁院士为代表的勇于拼搏的奉献精神等"三种精神"，培养了数以万计的优秀人才，为国家和区域经济社会发展作出了重要贡献。</p>
+            <p>在红色文化传承方面，福州大学有着光荣的革命传统和深厚的红色基因，始终将爱国主义教育融入办学育人全过程，培养了一批又一批具有家国情怀、担当民族复兴大任的时代新人。</p>
+        </section>
+
+        <!-- 时间轴 -->
+        <section id="timeline" class="timeline-section">
+            <h2 class="section-title"><i class="fas fa-timeline"></i> 福大历史沿革</h2>
+            <div class="timeline">
+                <!-- 时间轴项目 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year"><i class="fas fa-calendar-alt"></i> 1958年</div>
+                        <h3>福州大学成立</h3>
+                        <p>在时任福建省省委书记叶飞同志的大力推动下，福州大学正式成立，成为福建省第一所以工科为主的高等院校。</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year"><i class="fas fa-calendar-alt"></i> 1960年</div>
+                        <h3>迁址旗山校区</h3>
+                        <p>学校从最初的怡山校区迁至旗山校区，开始了新的发展阶段，校园规划面积大幅扩大。</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year"><i class="fas fa-calendar-alt"></i> 1978年</div>
+                        <h3>恢复高考招生</h3>
+                        <p>国家恢复高考后，福州大学迎来了新的发展机遇，教学科研工作逐步走上正轨。</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year"><i class="fas fa-calendar-alt"></i> 1996年</div>
+                        <h3>入选"211工程"</h3>
+                        <p>福州大学进入国家"211工程"重点建设高校行列，标志着学校发展进入新阶段。</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year"><i class="fas fa-calendar-alt"></i> 2008年</div>
+                        <h3>建校50周年</h3>
+                        <p>隆重举行建校50周年庆典，总结了半个世纪的办学经验，规划了未来发展蓝图。</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year"><i class="fas fa-calendar-alt"></i> 2017年</div>
+                        <h3>入选"双一流"</h3>
+                        <p>福州大学入选国家"双一流"建设高校名单，化学学科入选"双一流"建设学科。</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year"><i class="fas fa-calendar-alt"></i> 2023年</div>
+                        <h3>新时代发展</h3>
+                        <p>学校全面推进"双一流"建设，深化教育教学改革，服务国家和区域发展战略。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 图片展示 -->
+        <section id="gallery" class="gallery-section">
+            <h2 class="section-title"><i class="fas fa-camera"></i> 历史影像记忆</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="福州大学校门" class="gallery-img">
+                    <div class="img-caption">
+                        <h4>福州大学正门</h4>
+                        <p>庄重典雅的校园大门，见证着福大的发展与变迁</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="图书馆" class="gallery-img">
+                    <div class="img-caption">
+                        <h4>福大图书馆</h4>
+                        <p>知识的海洋，学子们求知的殿堂</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="校园风景" class="gallery-img">
+                    <div class="img-caption">
+                        <h4>旗山校区全景</h4>
+                        <p>山水相映的美丽校园环境</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="校园建筑" class="gallery-img">
+                    <div class="img-caption">
+                        <h4>特色建筑群</h4>
+                        <p>融合现代与传统建筑风格的校园建筑</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 红色文化 -->
+        <section id="culture" class="red-culture">
+            <h2 class="section-title"><i class="fas fa-heart"></i> 红色文化传承</h2>
+            <p>福州大学始终注重红色基因的传承与发扬，将爱国主义教育、革命传统教育融入教育教学全过程，培育学生的家国情怀和责任担当。</p>
+            
+            <div class="culture-cards">
+                <div class="culture-card">
+                    <div class="culture-icon"><i class="fas fa-users"></i></div>
+                    <h3>革命精神教育</h3>
+                    <p>定期开展革命传统教育，组织学生参观红色教育基地，学习革命先辈的光辉事迹。</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon"><i class="fas fa-book-open"></i></div>
+                    <h3>红色经典阅读</h3>
+                    <p>开展红色经典阅读活动，引导学生阅读革命文献，传承红色文化基因。</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3>思政课程改革</h3>
+                    <p>深化思想政治理论课改革创新，将红色文化有机融入课程教学内容。</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon"><i class="fas fa-hands-helping"></i></div>
+                    <h3>社会实践服务</h3>
+                    <p>组织学生开展红色主题社会实践活动，服务老区建设，践行初心使命。</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 20px; background-color: rgba(192, 10, 30, 0.1); border-radius: 8px;">
+                <h3 style="color: var(--fzu-red); margin-bottom: 10px;">福大"三种精神"</h3>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <i class="fas fa-arrow-right" style="color: var(--fzu-red); position: absolute; left: 0;"></i>
+                        <strong>张孤梅精神：</strong>艰苦奋斗的创业精神
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <i class="fas fa-arrow-right" style="color: var(--fzu-red); position: absolute; left: 0;"></i>
+                        <strong>卢嘉锡精神：</strong>严谨求实的治学精神
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <i class="fas fa-arrow-right" style="color: var(--fzu-red); position: absolute; left: 0;"></i>
+                        <strong>魏可镁精神：</strong>勇于拼搏的奉献精神
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <h3>福州大学校史馆</h3>
+            <p class="fzu-motto">"明德至诚，博学远志" - 福州大学校训</p>
+            <p>地址：福建省福州市福州大学旗山校区 | 电话：0591-2286XXXX</p>
+            <p>开放时间：周一至周五 9:00-17:00 (节假日另行通知)</p>
+            <div class="copyright">
+                <p>© 2023 福州大学校史与红色文化展馆 版权所有 | 设计：昆冈先锋小组</p>
+                <p>本页面用于"西二昆冈金课"作业展示，部分图片来源于网络</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                nav.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 更新活动导航项
+                    document.querySelectorAll('.nav-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // 时间轴动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // 为时间轴项目添加动画
+        document.querySelectorAll('.timeline-content').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+            observer.observe(item);
+        });
+
+        // 图片加载错误处理
+        document.querySelectorAll('.gallery-img').forEach(img => {
+            img.onerror = function() {
+                this.src = 'https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+                this.alt = '福州大学校园图片';
+            };
+        });
+
+        // 页面加载完成动画
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
